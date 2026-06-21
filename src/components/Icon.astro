@@ -1,0 +1,66 @@
+---
+/**
+ * Lightweight inline SVG icon set. Stroke-based, inherits currentColor.
+ * Usage: <Icon name="pin" class="w-6 h-6 text-gulf-500" />
+ */
+interface Props {
+  name: string;
+  class?: string;
+  title?: string;
+}
+const { name, class: className = "w-6 h-6", title } = Astro.props;
+
+const paths: Record<string, string> = {
+  pin: `<path d="M12 21s-6-5.686-6-10a6 6 0 1 1 12 0c0 4.314-6 10-6 10Z"/><circle cx="12" cy="11" r="2.25"/>`,
+  google: `<path d="M21 12.27c0-.64-.06-1.25-.16-1.84H12v3.49h5.05a4.32 4.32 0 0 1-1.87 2.83v2.35h3.02C19.97 17.4 21 15.07 21 12.27Z"/><path d="M12 21c2.43 0 4.47-.8 5.96-2.18l-3.02-2.35c-.84.56-1.92.9-2.94.9-2.26 0-4.18-1.53-4.86-3.58H3.98v2.42A9 9 0 0 0 12 21Z"/><path d="M7.14 13.79a5.4 5.4 0 0 1 0-3.46V7.91H3.98a9 9 0 0 0 0 8.18l3.16-2.3Z"/><path d="M12 6.96c1.32 0 2.5.46 3.44 1.35l2.58-2.58A9 9 0 0 0 3.98 7.91l3.16 2.42C7.82 8.48 9.74 6.96 12 6.96Z"/>`,
+  spark: `<path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/><circle cx="12" cy="12" r="3"/>`,
+  browser: `<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><circle cx="6.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="9" cy="6.5" r=".5" fill="currentColor"/>`,
+  star: `<path d="m12 3 2.7 5.47 6.04.88-4.37 4.26 1.03 6.01L12 17.9l-5.4 2.84 1.03-6.01-4.37-4.26 6.04-.88L12 3Z"/>`,
+  doc: `<path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M5 3h9l5 5v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M8 13h8M8 17h6"/>`,
+  phone: `<path d="M6.5 3.5h3l1.5 5-2 1.5a12 12 0 0 0 5 5l1.5-2 5 1.5v3a2 2 0 0 1-2 2A16.5 16.5 0 0 1 4.5 5.5a2 2 0 0 1 2-2Z"/>`,
+  check: `<path d="m5 12 4.5 4.5L19 7"/>`,
+  "check-circle": `<circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/>`,
+  arrow: `<path d="M5 12h14M13 6l6 6-6 6"/>`,
+  map: `<path d="m9 4 6 2 5-2v14l-5 2-6-2-5 2V6l5-2Z"/><path d="M9 4v14M15 6v14"/>`,
+  mail: `<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>`,
+  clock: `<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>`,
+  chart: `<path d="M4 19V5M4 19h16M8 17v-5M12 17V9M16 17v-8"/>`,
+  shield: `<path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3Z"/><path d="m9 12 2 2 4-4"/>`,
+  quote: `<path d="M7 7h4v5c0 2-1.5 3.5-3.5 4M14 7h4v5c0 2-1.5 3.5-3.5 4"/>`,
+  search: `<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>`,
+  users: `<circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 5.5a3 3 0 0 1 0 5.8M20.5 20a5.5 5.5 0 0 0-4-5.3"/>`,
+  target: `<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".6" fill="currentColor"/>`,
+  // industry icons
+  wrench: `<path d="M15 6a3.5 3.5 0 0 0-4.6 4.3l-5.6 5.6a1.6 1.6 0 0 0 2.3 2.3l5.6-5.6A3.5 3.5 0 0 0 17 8.9l-2.2 2.2-1.9-1.9L15 6Z"/>`,
+  droplet: `<path d="M12 3.5c3 3.5 5 6.2 5 8.8a5 5 0 0 1-10 0c0-2.6 2-5.3 5-8.8Z"/>`,
+  home: `<path d="M4 11.5 12 5l8 6.5"/><path d="M6 10.5V19a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-8.5"/><path d="M10 20v-5h4v5"/>`,
+  building: `<path d="M5 21V5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v16"/><path d="M14 9h4a1 1 0 0 1 1 1v11"/><path d="M3.5 21h17"/><path d="M8 8h2M8 12h2M8 16h2"/>`,
+  tooth: `<path d="M7.5 4.6C9 3.8 10.5 4.6 12 5.1c1.5-.5 3-1.3 4.5-.5 1.8 1 2.3 3.2 1.7 6.2-.4 2-.6 4.3-1.2 6.3-.4 1.4-1.6 1.4-2 .1-.4-1.3-.6-3-1-3.9-.3-.8-1.7-.8-2 0-.4 1-.6 2.6-1 3.9-.4 1.3-1.6 1.3-2-.1-.6-2-.8-4.3-1.2-6.3-.6-3-.1-5.2 1.7-6.2Z"/>`,
+  cross: `<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>`,
+  scale: `<path d="M12 4v16M8 20h8M5 8h14M12 4 6 8m6-4 6 4"/><path d="M6 8 3.6 13a2.4 2.4 0 0 0 4.8 0L6 8Zm12 0-2.4 5a2.4 2.4 0 0 0 4.8 0L18 8Z"/>`,
+  utensils: `<path d="M5 3v6a2 2 0 0 0 4 0V3M7 9v12M17 3c-1.4 0-2.2 2-2.2 4.5S15.6 12 17 12m0-9v18"/>`,
+  car: `<path d="M5 13l1.6-4.2A2 2 0 0 1 8.5 7.5h7a2 2 0 0 1 1.9 1.3L19 13M4.5 13h15v3.5a1 1 0 0 1-1 1H17a1 1 0 0 1-1-1V16H8v.5a1 1 0 0 1-1 1H5.5a1 1 0 0 1-1-1V13Z"/><path d="M7.5 15.5h.01M16.5 15.5h.01"/>`,
+  leaf: `<path d="M5 19C5 11 11 5 19 5c0 8-6 14-14 14Z"/><path d="M5 19c3.5-3.5 6.5-5.5 10.5-6.5"/>`,
+  hammer: `<path d="m13 4 7 7-2 2-7-7 2-2Z"/><path d="m11.5 6.5-7.1 7.1a1.9 1.9 0 0 0 2.7 2.7l7.1-7.1"/>`,
+  paint: `<rect x="3.5" y="4" width="12" height="5.5" rx="1"/><path d="M15.5 6.75H18a1.5 1.5 0 0 1 1.5 1.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-6.5a1.5 1.5 0 0 0-1.5 1.5V15"/><circle cx="10" cy="19.5" r="1.8"/>`,
+  door: `<path d="M6 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17"/><path d="M4 21h16"/><circle cx="15" cy="12.5" r="1" fill="currentColor"/>`,
+  fan: `<circle cx="12" cy="12" r="1.8"/><path d="M12 10.2C12 7 12.8 5 11 5s-2.8 2.5-.6 4.5"/><path d="M13.8 12C17 12 19 12.8 19 11s-2.5-2.8-4.5-.6"/><path d="M12 13.8C12 17 11.2 19 13 19s2.8-2.5.6-4.5"/><path d="M10.2 12C7 12 5 11.2 5 13s2.5 2.8 4.5.6"/>`,
+  spray: `<path d="M9 8V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3"/><path d="M14 5h2.5l2 2"/><rect x="8" y="8" width="6" height="12" rx="2"/><path d="M11 12v2.5"/>`,
+  gutter: `<path d="M3 9h18v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/><path d="M8 13v5a1 1 0 0 0 1 1h1"/><path d="M15 5l1.5 3M11 5l1 3M7 5l1 3"/>`,
+};
+
+const d = paths[name] ?? paths.check;
+---
+
+<svg
+  class={className}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.8"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden={title ? undefined : "true"}
+  role={title ? "img" : undefined}
+  set:html={(title ? `<title>${title}</title>` : "") + d}
+/>

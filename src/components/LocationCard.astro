@@ -1,0 +1,44 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+  href: string;
+  name: string;
+  county: string;
+  driveTime: string;
+  blurb: string;
+}
+const { href, name, county, driveTime, blurb } = Astro.props;
+---
+
+<a
+  href={href}
+  class="group flex flex-col rounded-2xl p-6 bg-white border border-navy-100 shadow-sm hover:shadow-md hover:border-gulf-200 hover:-translate-y-0.5 transition-all duration-200"
+>
+  <div class="flex items-start justify-between gap-3">
+    <div>
+      <h3 class="text-lg font-bold text-navy-900 group-hover:text-gulf-700">
+        SEO in {name}
+      </h3>
+      <p class="text-xs text-navy-500 mt-0.5">{county}</p>
+    </div>
+    <span
+      class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-navy-50 text-navy-500 group-hover:bg-gulf-50 group-hover:text-gulf-600 transition-colors shrink-0"
+    >
+      <Icon name="map" class="w-5 h-5" />
+    </span>
+  </div>
+  <p class="mt-3 text-sm text-navy-600 leading-relaxed flex-1">{blurb}</p>
+  <div class="mt-4 flex items-center justify-between text-sm">
+    <span class="inline-flex items-center gap-1.5 text-navy-500">
+      <Icon name="clock" class="w-4 h-4" />
+      {driveTime} away
+    </span>
+    <span
+      class="inline-flex items-center gap-1 font-semibold text-navy-900 group-hover:text-gulf-700"
+    >
+      View
+      <Icon name="arrow" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+    </span>
+  </div>
+</a>

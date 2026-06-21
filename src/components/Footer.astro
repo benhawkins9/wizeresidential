@@ -1,0 +1,127 @@
+---
+import { getCollection } from "astro:content";
+import { site } from "../data/site";
+import { locations } from "../data/locations";
+import Icon from "./Icon.astro";
+import Logo from "./Logo.astro";
+
+const services = (await getCollection("services")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-navy-950 text-navy-200 mt-auto">
+  <div class="container-page py-14">
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-12">
+      <!-- Brand / NAP -->
+      <div class="lg:col-span-4">
+        <Logo variant="white" class="h-12 w-auto" />
+        <p class="mt-4 text-sm leading-relaxed text-navy-300 max-w-xs">
+          {site.shortDescription}
+        </p>
+        <ul class="mt-5 space-y-2.5 text-sm">
+          <li>
+            <a href={site.phoneHref} class="flex items-center gap-2.5 hover:text-white">
+              <Icon name="phone" class="w-4.5 h-4.5 text-sand-400" />
+              {site.phone}
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${site.email}`} class="flex items-center gap-2.5 hover:text-white">
+              <Icon name="mail" class="w-4.5 h-4.5 text-sand-400" />
+              {site.email}
+            </a>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <Icon name="clock" class="w-4.5 h-4.5 text-sand-400" />
+            {site.hoursLabel}
+          </li>
+          <li class="flex items-center gap-2.5">
+            <Icon name="pin" class="w-4.5 h-4.5 text-sand-400" />
+            Serving Ocean Springs &amp; the MS Gulf Coast
+          </li>
+          <li class="flex items-start gap-2.5">
+            <Icon name="shield" class="w-4.5 h-4.5 text-sand-400 shrink-0 mt-0.5" />
+            <span>{site.license}</span>
+          </li>
+          {
+            site.social.google && (
+              <li>
+                <a
+                  href={site.social.google}
+                  target="_blank"
+                  rel="noopener"
+                  class="flex items-center gap-2.5 hover:text-white"
+                >
+                  <Icon name="google" class="w-4.5 h-4.5 text-sand-400" />
+                  Find us on Google
+                </a>
+              </li>
+            )
+          }
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div class="lg:col-span-3">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-white">Services</h2>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          {
+            services.map((s) => (
+              <li>
+                <a href={`/services/${s.id}`} class="hover:text-white">
+                  {s.data.shortTitle}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Service areas -->
+      <div class="lg:col-span-3">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-white">Service Areas</h2>
+        <ul class="mt-4 grid grid-cols-2 gap-x-4 gap-y-2.5 text-sm">
+          <li><a href="/" class="hover:text-white">Ocean Springs</a></li>
+          {
+            locations.map((l) => (
+              <li>
+                <a href={`/locations/${l.slug}`} class="hover:text-white">
+                  {l.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div class="lg:col-span-2">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-white">Company</h2>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          <li><a href="/about" class="hover:text-white">About Chris</a></li>
+          <li><a href="/service-packages" class="hover:text-white">Service Packages</a></li>
+          <li><a href="/results" class="hover:text-white">Reviews</a></li>
+          <li><a href="/guides" class="hover:text-white">Guides</a></li>
+          <li><a href="/estimate" class="hover:text-white">Free Estimate</a></li>
+          <li><a href="/contact" class="hover:text-white">Contact</a></li>
+          <li><a href="/privacy" class="hover:text-white">Privacy</a></li>
+          <li><a href="/terms" class="hover:text-white">Terms</a></li>
+          <li><a href="/accessibility" class="hover:text-white">Accessibility</a></li>
+          <li><a href="/sitemap" class="hover:text-white">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="mt-12 pt-6 border-t border-navy-800 flex flex-col sm:flex-row gap-4 items-center justify-between text-xs text-navy-400"
+    >
+      <p>© {year} {site.legalName}. All rights reserved. · {site.license}</p>
+      <p class="flex items-center gap-2">
+        <Icon name="pin" class="w-3.5 h-3.5 text-sand-500" />
+        Locally owned in Ocean Springs, Mississippi
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,158 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CTASection from "../components/CTASection.astro";
+import FAQ from "../components/FAQ.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import Icon from "../components/Icon.astro";
+import { site } from "../data/site";
+import { breadcrumbSchema, faqSchema } from "../lib/schema";
+
+const crumbs = [
+  { name: "Home", url: "/" },
+  { name: "Service Packages", url: "/service-packages" },
+];
+
+const packages = [
+  {
+    name: "Per-Visit Repairs",
+    price: "2-hour minimum",
+    unit: "",
+    tagline: "The simplest way to clear your to-do list.",
+    highlight: false,
+    features: [
+      "Great for small jobs and honey-do lists",
+      "Two-hour minimum so one trip covers a lot",
+      "Mounting, fixtures, fans, assembly & more",
+      "One fair price — same rate, any zip code",
+      "Free estimate before any work begins",
+    ],
+    note: "Larger projects (mold, carpentry, filtration installs) are quoted individually.",
+    cta: { label: "Get a free estimate", href: "/estimate" },
+  },
+  {
+    name: "Filtration Maintenance Plan",
+    price: "Scheduled service",
+    unit: "",
+    tagline: "Set-it-and-forget-it care for your water system.",
+    highlight: true,
+    features: [
+      "Filter & membrane swaps on the right cycle",
+      "Housing sanitization & leak checks",
+      "Water-quality testing each visit",
+      "Whole-home & under-sink RO systems",
+      "Set terms — provided up front, no surprises",
+    ],
+    note: "Filtration maintenance runs on set terms. Ask for the current plan details.",
+    cta: { label: "Ask about a plan", href: "/estimate" },
+  },
+  {
+    name: "Custom Maintenance Plan",
+    price: "Built for your home",
+    unit: "",
+    tagline: "Ongoing care, scheduled around your needs.",
+    highlight: false,
+    features: [
+      "Seasonal repairs & upkeep",
+      "Post-inspection punch lists",
+      "Mold aftercare & moisture checks",
+      "Scheduled visits, straightforward terms",
+      "Created on a client-to-client basis",
+    ],
+    note: "Every home is different — we'll build a plan that fits yours.",
+    cta: { label: "Let's talk", href: "/contact" },
+  },
+];
+
+const packageFaqs = [
+  {
+    q: "How does your pricing work?",
+    a: "Simple and fair. Small jobs use a two-hour minimum so one visit covers a lot. Bigger projects — mold remediation, carpentry, filtration installs — get a detailed written estimate first. Either way, it's one fair price regardless of your zip code, with no hidden fees.",
+  },
+  {
+    q: "Are general service packages a fixed price?",
+    a: "Custom maintenance plans are created on a client-to-client basis, because every home and to-do list is different. We'll scope what you need — seasonal repairs, punch lists, mold aftercare — and set straightforward terms before any work starts.",
+  },
+  {
+    q: "What's included in the filtration maintenance plan?",
+    a: "Scheduled filter and membrane swaps, housing sanitization, pressure and leak checks, and a water-quality test each visit, for whole-home and under-sink RO systems. Filtration maintenance runs on set terms — just ask and I'll share the current details.",
+  },
+  {
+    q: "Do I have to sign a long contract?",
+    a: "No. Maintenance plans are built around your needs with clear, straightforward terms — not long lock-in contracts. You're always free to start with a single visit and add a plan later.",
+  },
+];
+---
+
+<BaseLayout
+  title="Service Packages & Maintenance Plans | Wise Residential"
+  description="Wise Residential service packages for Ocean Springs, MS — per-visit repairs (2-hour minimum), water filtration maintenance plans, and custom home maintenance plans. Free estimates, fair pricing."
+  canonicalPath="/service-packages"
+  schema={[breadcrumbSchema(crumbs), faqSchema(packageFaqs)]}
+>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <!-- Hero -->
+  <section class="container-page pt-8 pb-10 md:pt-12 text-center">
+    <span class="eyebrow">Service Packages</span>
+    <h1 class="mt-3 text-4xl md:text-5xl font-extrabold tracking-tight text-navy-900">
+      Maintenance plans &amp; fair, simple pricing
+    </h1>
+    <p class="mt-5 text-lg text-navy-600 leading-relaxed max-w-2xl mx-auto">
+      Whether you need a one-time fix or ongoing care, the deal is the same: an
+      honest estimate, one fair price no matter your zip code, and work done
+      cleanly and on schedule.
+    </p>
+    <div class="mt-6 inline-flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-navy-600">
+      <span class="inline-flex items-center gap-2"><Icon name="check-circle" class="w-4.5 h-4.5 text-gulf-600" /> Free estimates</span>
+      <span class="inline-flex items-center gap-2"><Icon name="check-circle" class="w-4.5 h-4.5 text-gulf-600" /> No hidden fees</span>
+      <span class="inline-flex items-center gap-2"><Icon name="check-circle" class="w-4.5 h-4.5 text-gulf-600" /> $10 off your first service</span>
+    </div>
+  </section>
+
+  <!-- Packages -->
+  <section class="container-page py-10">
+    <div class="grid gap-6 lg:grid-cols-3">
+      {
+        packages.map((p) => (
+          <div
+            class:list={[
+              "relative flex flex-col rounded-2xl border p-7 shadow-sm bg-white",
+              p.highlight ? "border-gulf-300 ring-1 ring-gulf-200" : "border-navy-100",
+            ]}
+          >
+            {p.highlight && (
+              <span class="absolute -top-3 left-7 rounded-full bg-sand-400 text-navy-950 text-xs font-bold px-3 py-1">
+                Most popular
+              </span>
+            )}
+            <h2 class="text-xl font-bold text-navy-900">{p.name}</h2>
+            <p class="mt-1 text-sm text-navy-600">{p.tagline}</p>
+            <div class="mt-4 flex items-baseline gap-1.5">
+              <span class="text-2xl font-extrabold text-navy-900">{p.price}</span>
+              <span class="text-navy-500">{p.unit}</span>
+            </div>
+            <ul class="mt-5 space-y-2.5 flex-1">
+              {p.features.map((f) => (
+                <li class="flex items-start gap-2.5 text-sm text-navy-700">
+                  <Icon name="check" class="w-4.5 h-4.5 text-gulf-600 shrink-0 mt-0.5" />
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+            {p.note && <p class="mt-4 text-xs text-navy-500 italic">{p.note}</p>}
+            <a href={p.cta.href} class:list={["btn mt-5 w-full", p.highlight ? "btn-primary" : "btn-ghost"]}>
+              {p.cta.label} <Icon name="arrow" class="w-4.5 h-4.5" />
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <FAQ faqs={packageFaqs} heading="Package & pricing questions" />
+
+  <CTASection
+    heading="Not sure what you need?"
+    text="Tell me about your home and your list. I'll recommend the simplest, fairest way to get it handled — and apply your $10 new-customer credit."
+  />
+</BaseLayout>

@@ -1,0 +1,150 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CTASection from "../components/CTASection.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import Icon from "../components/Icon.astro";
+import { site } from "../data/site";
+import { breadcrumbSchema } from "../lib/schema";
+
+/**
+ * ⚠️ REVIEW: real customer reviews go in `reviews` once you have permission to
+ * share them (and ideally once the Google Business Profile is collecting them).
+ * Only show real, verifiable quotes — never fabricate. Until then this page
+ * honestly sells the promise and invites the first reviews.
+ */
+const reviews: { quote: string; name: string; city: string }[] = [];
+
+const crumbs = [
+  { name: "Home", url: "/" },
+  { name: "Reviews", url: "/results" },
+];
+
+const promise = [
+  { icon: "clock", title: "On time, every time", text: "I show up when I say I will — and call ahead if anything ever changes. Your schedule matters." },
+  { icon: "check-circle", title: "One fair price", text: "The same fair pricing formula for everyone, regardless of your zip code. No hidden fees, ever." },
+  { icon: "shield", title: "Licensed & insured", text: "Fully licensed (MS #1500778) and insured, with every repair done to code and to manufacturer spec." },
+  { icon: "home", title: "Cleaner than I found it", text: "I respect your home — plan first, keep it tidy, and leave the space cleaner than when I arrived." },
+  { icon: "droplet", title: "Healthy-home expertise", text: "Beyond repairs, I specialize in mold remediation and water filtration to keep your home healthy." },
+  { icon: "star", title: "No pressure, no upsells", text: "I'll tell you honestly what needs doing and what can wait. I never push work you don't need." },
+];
+
+const steps = [
+  { when: "Step 1", what: "Reach out — call, text, or send a few photos of what's going on around the house." },
+  { when: "Step 2", what: "Get a free, written estimate using one fair price, with the scope laid out clearly." },
+  { when: "Step 3", what: "I do the work on schedule, to code and to manufacturer spec — no shortcuts." },
+  { when: "Step 4", what: "I clean up, walk you through it, and stand behind the work. That's the whole deal." },
+];
+---
+
+<BaseLayout
+  title="Reviews & Our Promise | Wise Residential Ocean Springs"
+  description="Why Ocean Springs homeowners trust Wise Residential: on-time, licensed & insured, one fair price, and your home left cleaner than I found it. See the promise and what to expect."
+  canonicalPath="/results"
+  schema={[breadcrumbSchema(crumbs)]}
+>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <section class="container-page pt-8 pb-12 md:pt-12">
+    <div class="max-w-3xl">
+      <span class="eyebrow">Reviews &amp; our promise</span>
+      <h1 class="mt-3 text-4xl md:text-5xl font-extrabold tracking-tight text-navy-900">
+        Why Ocean Springs homeowners trust Wise Residential
+      </h1>
+      <p class="mt-5 text-lg text-navy-600 leading-relaxed">
+        I'd rather earn your trust than claim it. Here's exactly what you can
+        count on with every job — and what working with me looks like from the
+        first call to the final cleanup.
+      </p>
+    </div>
+  </section>
+
+  <!-- The promise -->
+  <section class="container-page pb-8">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        promise.map((m) => (
+          <div class="rounded-2xl bg-white border border-navy-100 p-6 shadow-sm">
+            <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gulf-50 text-gulf-600">
+              <Icon name={m.icon} class="w-6 h-6" />
+            </span>
+            <h2 class="mt-4 text-lg font-bold text-navy-900">{m.title}</h2>
+            <p class="mt-2 text-navy-600 leading-relaxed">{m.text}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- What to expect -->
+  <section class="bg-sand-wash">
+    <div class="container-page py-16">
+      <div class="max-w-2xl">
+        <span class="eyebrow">What to expect</span>
+        <h2 class="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight text-navy-900">
+          What working with me looks like
+        </h2>
+      </div>
+      <div class="mt-10 grid gap-5 md:grid-cols-4">
+        {
+          steps.map((t, i) => (
+            <div class="relative rounded-2xl bg-white border border-navy-100 p-6 shadow-sm">
+              <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-navy-900 text-white text-sm font-bold">
+                {i + 1}
+              </span>
+              <p class="mt-3 text-sm font-bold text-gulf-700">{t.when}</p>
+              <p class="mt-1.5 text-navy-700 leading-relaxed text-sm">{t.what}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews (real only) -->
+  <section class="container-page py-16">
+    {
+      reviews.length > 0 ? (
+        <div class="grid gap-6 md:grid-cols-3">
+          {reviews.map((r) => (
+            <figure class="rounded-2xl bg-white border border-navy-100 p-6 shadow-sm">
+              <div class="flex gap-0.5 text-sand-400">
+                {Array.from({ length: 5 }).map(() => (
+                  <Icon name="star" class="w-4.5 h-4.5 fill-current" />
+                ))}
+              </div>
+              <blockquote class="mt-3 text-navy-800 leading-relaxed">“{r.quote}”</blockquote>
+              <figcaption class="mt-4 text-sm font-semibold text-navy-900">
+                {r.name} <span class="font-normal text-navy-500">· {r.city}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      ) : (
+        <div class="max-w-2xl mx-auto text-center rounded-3xl bg-navy-50 border border-navy-100 p-10">
+          <span class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gulf-100 text-gulf-700 mx-auto">
+            <Icon name="star" class="w-7 h-7" />
+          </span>
+          <h2 class="mt-5 text-2xl font-extrabold tracking-tight text-navy-900">
+            Be one of the first to review Wise Residential
+          </h2>
+          <p class="mt-3 text-navy-600 leading-relaxed">
+            Wise Residential is a local, owner-operated business earning its
+            reputation one honest job at a time. Hire me for your next repair and
+            you'll get my sharpest focus — and if I've earned it, a review goes a
+            long way for a neighbor just starting out.
+          </p>
+          <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="/estimate" class="btn btn-primary">Get a Free Estimate</a>
+            {site.social.google && (
+              <a href={site.social.google} target="_blank" rel="noopener" class="btn btn-ghost">
+                <Icon name="google" class="w-4.5 h-4.5" /> Leave a Google review
+              </a>
+            )}
+          </div>
+        </div>
+      )
+    }
+  </section>
+
+  <CTASection />
+</BaseLayout>

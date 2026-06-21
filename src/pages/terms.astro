@@ -1,0 +1,84 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { site } from "../data/site";
+
+const crumbs = [
+  { name: "Home", url: "/" },
+  { name: "Terms & Conditions", url: "/terms" },
+];
+// ⚠️ REVIEW: starter terms only. The live site has detailed service terms &
+// warranty language — port those in, and have counsel review before relying on this.
+const effective = "June 2026";
+---
+
+<BaseLayout
+  title="Terms & Conditions"
+  description="The terms governing use of the Wise Residential website and services."
+  canonicalPath="/terms"
+  noindex={true}
+>
+  <Breadcrumbs crumbs={crumbs} />
+  <article class="container-page py-12 max-w-3xl prose-local">
+    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-navy-900">Terms & Conditions</h1>
+    <p class="text-sm text-navy-500">Effective {effective}</p>
+
+    <p>
+      These Terms govern your use of {site.domain} (the "Site") and the services
+      provided by {site.legalName} ({site.license}). By using the Site or
+      requesting services, you agree to these Terms.
+    </p>
+
+    <h2>Use of the site</h2>
+    <p>
+      The Site and its content are provided for general information about home-repair
+      services. You agree to use it lawfully and not to misuse, disrupt, or attempt
+      to gain unauthorized access to it.
+    </p>
+
+    <h2>Estimates & service agreements</h2>
+    <p>
+      Estimates are provided in good faith based on the information and photos you
+      share and, where possible, an on-site assessment. Final scope and pricing
+      are confirmed in a written estimate before work begins. Unforeseen
+      conditions (for example, hidden water damage or rot discovered during the
+      job) may change the scope, and any changes will be discussed with you first.
+    </p>
+
+    <h2>Workmanship & warranty</h2>
+    <p>
+      Work is performed to manufacturer specifications and applicable code. Any
+      warranty on labor or materials is described in your written estimate or
+      service agreement. Manufacturer warranties on installed products are passed
+      through to you per the manufacturer's terms.
+    </p>
+
+    <h2>Scheduling, payment & cancellation</h2>
+    <p>
+      Scheduling, deposits, payment terms, and cancellation are set out in your
+      written estimate or service agreement. Small jobs are subject to a two-hour
+      minimum. Please give reasonable notice to reschedule so I can serve other
+      neighbors waiting for an appointment.
+    </p>
+
+    <h2>Limitation of liability</h2>
+    <p>
+      To the fullest extent permitted by law, {site.legalName} is not liable for
+      any indirect or consequential damages arising from your use of the Site.
+      Liability for services is governed by your written service agreement.
+    </p>
+
+    <h2>Intellectual property</h2>
+    <p>
+      All content on this Site, including text, graphics, and logos, is the
+      property of {site.legalName} unless otherwise noted, and may not be reused
+      without permission.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions about these Terms? Email <a href={`mailto:${site.email}`}>{site.email}</a>
+      or call {site.phone}.
+    </p>
+  </article>
+</BaseLayout>

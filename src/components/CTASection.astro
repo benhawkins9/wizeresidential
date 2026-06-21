@@ -1,0 +1,40 @@
+---
+import { site } from "../data/site";
+import Icon from "./Icon.astro";
+
+interface Props {
+  heading?: string;
+  text?: string;
+  variant?: "navy" | "gulf";
+}
+const {
+  heading = "Ready to fix it right — the first time?",
+  text = "Tell me what's going on and I'll get you a fast, fair estimate. No pressure, no hidden fees — and new customers get $10 off their first service.",
+  variant = "navy",
+} = Astro.props;
+
+const bg = variant === "gulf" ? "bg-gulf-700" : "bg-navy-900";
+const firstName = site.founder.name.split(" ")[0];
+---
+
+<section class={`${bg} text-white`}>
+  <div class="container-page py-16 md:py-20">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">{heading}</h2>
+      <p class="mt-4 text-lg text-white/85 leading-relaxed">{text}</p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/estimate" class="btn btn-primary text-base">
+          Get a Free Estimate
+          <Icon name="arrow" class="w-4.5 h-4.5" />
+        </a>
+        <a href={site.phoneHref} class="btn btn-white text-base">
+          <Icon name="phone" class="w-4.5 h-4.5 text-gulf-600" />
+          {site.phone}
+        </a>
+      </div>
+      <p class="mt-5 text-sm text-white/60">
+        Licensed &amp; insured · You work directly with {firstName} · Serving the MS Gulf Coast
+      </p>
+    </div>
+  </div>
+</section>

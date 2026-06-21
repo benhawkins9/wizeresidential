@@ -1,0 +1,86 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LeadForm from "../components/LeadForm.astro";
+import FAQ from "../components/FAQ.astro";
+import Icon from "../components/Icon.astro";
+import { site } from "../data/site";
+import { breadcrumbSchema, faqSchema } from "../lib/schema";
+
+const crumbs = [
+  { name: "Home", url: "/" },
+  { name: "Free Estimate", url: "/estimate" },
+];
+
+const youGet = [
+  { icon: "doc", title: "A fast, fair quote", text: "A clear written estimate using one fair pricing formula — the same rate for everyone, no matter your zip code." },
+  { icon: "star", title: "$10 off your first service", text: "New customers in the Ocean Springs / Jackson County area get $10 off their first job, just for reaching out." },
+  { icon: "shield", title: "No pressure, no upsells", text: "I'll tell you honestly what needs doing and what can wait. I never push work you don't need." },
+  { icon: "phone", title: "Photos welcome", text: "Text a few photos of the problem and I can often give you a ballpark before I even arrive." },
+  { icon: "clock", title: "A quick reply", text: "I respond within one business day — usually sooner — and prioritize local Ocean Springs calls." },
+  { icon: "check-circle", title: "Licensed & insured peace of mind", text: "Every job is backed by a licensed (MS #1500778), insured contractor who does it to code." },
+];
+
+const estimateFaqs = [
+  { q: "Is the estimate really free?", a: "Yes — estimates are free and there's no obligation. For many small jobs I can give you a ballpark right over text from a couple of photos." },
+  { q: "How fast will I hear back?", a: "Within one business day, and usually sooner. I prioritize local Ocean Springs and Jackson County calls, and can often schedule within 24–48 hours." },
+  { q: "How does the $10 new-customer credit work?", a: site.offer.disclaimer + " Just mention it when you reach out, or submit the form below and I'll apply it to your first invoice." },
+  { q: "Do you charge a trip or service fee for small jobs?", a: "I use a two-hour minimum for small jobs so it's cost-effective to clear your whole to-do list in one visit, rather than nickel-and-diming you with separate trip fees." },
+  { q: "What areas do you cover?", a: "Ocean Springs and the surrounding Gulf Coast — Gautier, St. Martin, Gulf Hills, Biloxi, D'Iberville, Vancleave, Moss Point, and Pascagoula. If you're nearby and don't see your town, just ask." },
+];
+---
+
+<BaseLayout
+  title="Free Estimate | Wise Residential Ocean Springs Home Repair"
+  description="Request a free home-repair estimate from Wise Residential in Ocean Springs, MS — and get $10 off your first service. Fast, fair quotes for handyman, mold, water filtration, drywall & carpentry."
+  canonicalPath="/estimate"
+  schema={[breadcrumbSchema(crumbs), faqSchema(estimateFaqs)]}
+>
+  <section class="bg-navy-950 text-white">
+    <div class="container-page py-14 md:py-20">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+        <div>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-sand-200 ring-1 ring-white/15">
+            <Icon name="star" class="w-4 h-4" /> Free estimate · $10 off your first service
+          </span>
+          <h1 class="mt-5 text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
+            Tell me about the job — get a fast, fair estimate
+          </h1>
+          <p class="mt-5 text-lg text-navy-200 leading-relaxed">
+            Whether it's a single fix or a whole to-do list, send me the details
+            and I'll get you an honest quote. New customers get <strong class="text-white">$10 off</strong>
+            their first service — my way of saying thanks for giving a local pro a shot.
+          </p>
+          <ul class="mt-7 grid sm:grid-cols-2 gap-x-6 gap-y-4">
+            {
+              youGet.map((g) => (
+                <li class="flex items-start gap-3">
+                  <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white/10 text-sand-300 shrink-0">
+                    <Icon name={g.icon} class="w-5 h-5" />
+                  </span>
+                  <div>
+                    <p class="font-semibold text-white">{g.title}</p>
+                    <p class="text-sm text-navy-300">{g.text}</p>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+          <div class="mt-8 flex items-center gap-3 text-sm text-navy-300">
+            <Icon name="phone" class="w-4.5 h-4.5 text-sand-400" />
+            Prefer to talk? Call or text <a href={site.phoneHref} class="text-white font-semibold link-underline">{site.phone}</a>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-xl">
+          <h2 class="text-xl font-bold text-navy-900">Request your free estimate</h2>
+          <p class="mt-1 text-sm text-navy-500">I'll reply within one business day — and apply your $10 new-customer credit.</p>
+          <div class="mt-5">
+            <LeadForm variant="estimate" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FAQ faqs={estimateFaqs} heading="About your free estimate" />
+</BaseLayout>

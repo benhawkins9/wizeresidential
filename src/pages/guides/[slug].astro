@@ -1,0 +1,145 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CTASection from "../../components/CTASection.astro";
+import FAQ from "../../components/FAQ.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import Icon from "../../components/Icon.astro";
+import PageImage from "../../components/PageImage.astro";
+import { site } from "../../data/site";
+import { articleSchema, faqSchema, breadcrumbSchema } from "../../lib/schema";
+
+export async function getStaticPaths() {
+  const guides = await getCollection("guides");
+  return guides.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+const { Content } = await render(entry);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+// Related guides (by slug) — resolve to entries.
+const allGuides = await getCollection("guides");
+const related = data.related
+  .map((slug) => allGuides.find((g) => g.id === slug))
+  .filter((g): g is (typeof allGuides)[number] => Boolean(g))
+  .slice(0, 3);
+
+const url = `${site.url}/guides/${entry.id}`;
+const crumbs = [
+  { name: "Home", url: "/" },
+  { name: "Guides", url: "/guides" },
+  { name: data.title, url: `/guides/${entry.id}` },
+];
+
+const schema = [
+  articleSchema({
+    title: data.title,
+    description: data.description,
+    url,
+    datePublished: data.publishDate.toISOString(),
+    dateModified: (data.updatedDate ?? data.publishDate).toISOString(),
+    section: data.category,
+  }),
+  faqSchema(data.faqs),
+  breadcrumbSchema(crumbs),
+].filter(Boolean);
+---
+
+<BaseLayout
+  title={data.metaTitle ?? data.title}
+  description={data.metaDescription ?? data.description}
+  canonicalPath={`/guides/${entry.id}`}
+  ogType="article"
+  schema={schema}
+>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <article class="container-page py-8 md:py-10">
+    <div class="max-w-3xl mx-auto">
+      <!-- Header -->
+      <header>
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-gulf-50 text-gulf-700 px-3 py-1 text-xs font-bold uppercase tracking-wide">
+          {data.category}
+        </span>
+        <h1 class="mt-4 text-3xl md:text-5xl font-extrabold tracking-tight text-navy-900">
+          {data.title}
+        </h1>
+        <div class="mt-4 flex items-center gap-3 text-sm text-navy-500">
+          <span class="font-semibold text-navy-700">{site.founder.name}</span>
+          <span aria-hidden="true">·</span>
+          <time datetime={data.publishDate.toISOString()}>{fmt(data.publishDate)}</time>
+          {
+            data.updatedDate && (
+              <>
+                <span aria-hidden="true">·</span>
+                <span>Updated {fmt(data.updatedDate)}</span>
+              </>
+            )
+          }
+        </div>
+      </header>
+
+      <!-- AEO answer box: self-contained, quotable -->
+      {
+        data.answer && (
+          <div class="mt-6 rounded-2xl border-l-4 border-gulf-500 bg-navy-50 p-5">
+            <p class="text-[0.7rem] font-bold uppercase tracking-wider text-gulf-700">
+              The short answer
+            </p>
+            <p class="mt-1.5 text-lg text-navy-800 leading-relaxed">{data.answer}</p>
+          </div>
+        )
+      }
+
+      <!-- Featured image -->
+      <PageImage id={`guide-${entry.id}`} alt={data.title} class="w-full rounded-2xl border border-navy-100 mt-8" loading="eager" widths={[600, 900, 1200]} sizes="(max-width: 768px) 100vw, 768px" />
+
+      <!-- Body -->
+      <div class="prose-local max-w-none mt-8">
+        <Content />
+      </div>
+    </div>
+  </article>
+
+  <FAQ faqs={data.faqs} heading="Frequently asked questions" />
+
+  {
+    related.length > 0 && (
+      <section class="bg-sand-wash">
+        <div class="container-page py-14">
+          <h2 class="text-2xl font-extrabold tracking-tight text-navy-900 text-center">
+            Keep reading
+          </h2>
+          <div class="mt-8 grid gap-5 sm:grid-cols-3 max-w-4xl mx-auto">
+            {related.map((g) => (
+              <a
+                href={`/guides/${g.id}`}
+                class="group rounded-2xl bg-white border border-navy-100 p-5 shadow-sm hover:shadow-md hover:border-gulf-200 transition-all"
+              >
+                <span class="text-xs font-bold uppercase tracking-wide text-gulf-600">
+                  {g.data.category}
+                </span>
+                <h3 class="mt-2 font-bold text-navy-900 group-hover:text-gulf-700">
+                  {g.data.title}
+                </h3>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <CTASection />
+</BaseLayout>

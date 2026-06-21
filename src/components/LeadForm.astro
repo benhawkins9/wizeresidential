@@ -1,0 +1,175 @@
+---
+import { site } from "../data/site";
+import { getCollection } from "astro:content";
+import Icon from "./Icon.astro";
+
+interface Props {
+  variant?: "estimate" | "contact";
+  /** Heading rendered above the form. */
+  title?: string;
+}
+const { variant = "estimate", title } = Astro.props;
+
+const services = (await getCollection("services")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const source = variant === "estimate" ? "Estimate page" : "Contact page";
+---
+
+<form id="lead-form" class="space-y-4" data-endpoint={site.forms.endpoint}>
+  {title && <h2 class="text-xl font-bold text-navy-900">{title}</h2>}
+
+  <input type="hidden" name="source" value={source} />
+  <!-- Honeypot: real users never check this; bots do. -->
+  <input
+    type="checkbox"
+    name="botcheck"
+    class="hidden"
+    style="display:none"
+    tabindex="-1"
+    autocomplete="off"
+    aria-hidden="true"
+  />
+
+  <div class="grid sm:grid-cols-2 gap-4">
+    <label class="block">
+      <span class="text-sm font-medium text-navy-800">Name *</span>
+      <input
+        required
+        name="name"
+        autocomplete="name"
+        class="mt-1 w-full rounded-lg border border-navy-200 px-3.5 py-2.5 focus:border-gulf-500 focus:ring-2 focus:ring-gulf-200 outline-none"
+      />
+    </label>
+    <label class="block">
+      <span class="text-sm font-medium text-navy-800">City / neighborhood</span>
+      <input
+        name="city"
+        placeholder="Ocean Springs, Gautier, Biloxi…"
+        class="mt-1 w-full rounded-lg border border-navy-200 px-3.5 py-2.5 focus:border-gulf-500 focus:ring-2 focus:ring-gulf-200 outline-none"
+      />
+    </label>
+    <label class="block">
+      <span class="text-sm font-medium text-navy-800">Email *</span>
+      <input
+        required
+        type="email"
+        name="email"
+        autocomplete="email"
+        class="mt-1 w-full rounded-lg border border-navy-200 px-3.5 py-2.5 focus:border-gulf-500 focus:ring-2 focus:ring-gulf-200 outline-none"
+      />
+    </label>
+    <label class="block">
+      <span class="text-sm font-medium text-navy-800">Phone</span>
+      <input
+        type="tel"
+        name="phone"
+        autocomplete="tel"
+        class="mt-1 w-full rounded-lg border border-navy-200 px-3.5 py-2.5 focus:border-gulf-500 focus:ring-2 focus:ring-gulf-200 outline-none"
+      />
+    </label>
+  </div>
+
+  <label class="block">
+    <span class="text-sm font-medium text-navy-800">What do you need done?</span>
+    <select
+      name="interest"
+      class="mt-1 w-full rounded-lg border border-navy-200 px-3.5 py-2.5 bg-white focus:border-gulf-500 focus:ring-2 focus:ring-gulf-200 outline-none"
+    >
+      <option value="Not sure / a few things">Not sure yet — a few things on my list</option>
+      {services.map((s) => <option value={s.data.title}>{s.data.shortTitle}</option>)}
+    </select>
+  </label>
+
+  <label class="block">
+    <span class="text-sm font-medium text-navy-800">
+      Tell me about the job
+    </span>
+    <textarea
+      name="message"
+      rows="3"
+      placeholder="A short description helps me give an accurate estimate — feel free to mention photos you can text over."
+      class="mt-1 w-full rounded-lg border border-navy-200 px-3.5 py-2.5 focus:border-gulf-500 focus:ring-2 focus:ring-gulf-200 outline-none"
+    ></textarea>
+  </label>
+
+  <button type="submit" class="btn btn-primary w-full text-base">
+    {variant === "estimate" ? "Get My Free Estimate" : "Send Message"}
+    <Icon name="arrow" class="w-4.5 h-4.5" />
+  </button>
+
+  <p class="text-xs text-navy-500 text-center">
+    No spam, ever. I typically reply within one business day — or call/text {site.phone} for a faster answer.
+  </p>
+
+  <div
+    id="form-status"
+    class="hidden rounded-lg p-4 text-sm"
+    role="status"
+    aria-live="polite"
+  >
+  </div>
+</form>
+
+<script>
+  const form = document.getElementById("lead-form") as HTMLFormElement | null;
+  const status = document.getElementById("form-status");
+  if (form && status) {
+    const endpoint = form.dataset.endpoint!;
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // Honeypot — silently stop bots.
+      const bot = form.querySelector<HTMLInputElement>('input[name="botcheck"]');
+      if (bot?.checked) return;
+
+      const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      const original = btn?.innerHTML;
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = "Sending…";
+      }
+
+      try {
+        const payload = Object.fromEntries(new FormData(form).entries());
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const json = await res.json().catch(() => ({}));
+        if (res.ok && json.success) {
+          form.reset();
+          show(
+            "ok",
+            "Thank you! Your request is in — check your inbox for a confirmation, and I'll be in touch within one business day."
+          );
+          form.querySelectorAll("label, button").forEach((el) => el.remove());
+        } else {
+          show("warn", fallbackMsg());
+        }
+      } catch {
+        show("warn", fallbackMsg());
+      } finally {
+        if (btn && original) {
+          btn.disabled = false;
+          btn.innerHTML = original;
+        }
+      }
+    });
+
+    function fallbackMsg() {
+      return "Something went wrong on our end. Please call or text us directly and we'll take care of you right away — we don't want to miss you.";
+    }
+
+    function show(kind: "ok" | "warn", msg: string) {
+      status!.className =
+        "rounded-lg p-4 text-sm " +
+        (kind === "ok"
+          ? "bg-gulf-50 text-gulf-800 border border-gulf-200"
+          : "bg-sand-50 text-sand-900 border border-sand-200");
+      status!.textContent = msg;
+    }
+  }
+</script>

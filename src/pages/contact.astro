@@ -1,0 +1,80 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LeadForm from "../components/LeadForm.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import Icon from "../components/Icon.astro";
+import { site } from "../data/site";
+import { breadcrumbSchema, webPageSchema } from "../lib/schema";
+
+const crumbs = [
+  { name: "Home", url: "/" },
+  { name: "Contact", url: "/contact" },
+];
+---
+
+<BaseLayout
+  title="Contact Wise Residential | Ocean Springs Home Repair"
+  description="Contact Wise Residential for home repair in Ocean Springs, MS. Call or text (228) 327-8859, email, or send a message — I reply within one business day. Free estimates."
+  canonicalPath="/contact"
+  schema={[breadcrumbSchema(crumbs), webPageSchema("ContactPage", { name: "Contact Wise Residential", url: "/contact" })]}
+>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <section class="container-page pt-8 pb-16 md:pt-12">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+      <div>
+        <span class="eyebrow">Contact</span>
+        <h1 class="mt-3 text-4xl md:text-5xl font-extrabold tracking-tight text-navy-900">
+          Let's get your repair scheduled
+        </h1>
+        <p class="mt-5 text-lg text-navy-600 leading-relaxed">
+          Tell me what's going on around the house — the easiest way is to call or
+          text, and photos help me give you a fast, accurate estimate. I reply
+          within one business day, usually sooner. No pressure, no hidden fees.
+        </p>
+
+        <div class="mt-8 space-y-4">
+          <a href={site.phoneHref} class="flex items-center gap-4 rounded-xl bg-white border border-navy-100 p-4 shadow-sm hover:border-gulf-200 transition-colors">
+            <span class="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-gulf-50 text-gulf-600"><Icon name="phone" class="w-5.5 h-5.5" /></span>
+            <span>
+              <span class="block text-sm text-navy-500">Call or text</span>
+              <span class="block font-semibold text-navy-900">{site.phone}</span>
+            </span>
+          </a>
+          <a href={`mailto:${site.email}`} class="flex items-center gap-4 rounded-xl bg-white border border-navy-100 p-4 shadow-sm hover:border-gulf-200 transition-colors">
+            <span class="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-gulf-50 text-gulf-600"><Icon name="mail" class="w-5.5 h-5.5" /></span>
+            <span>
+              <span class="block text-sm text-navy-500">Email</span>
+              <span class="block font-semibold text-navy-900">{site.email}</span>
+            </span>
+          </a>
+          <div class="flex items-center gap-4 rounded-xl bg-white border border-navy-100 p-4 shadow-sm">
+            <span class="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-gulf-50 text-gulf-600"><Icon name="clock" class="w-5.5 h-5.5" /></span>
+            <span>
+              <span class="block text-sm text-navy-500">Hours</span>
+              <span class="block font-semibold text-navy-900">{site.hoursLabel}</span>
+            </span>
+          </div>
+          <div class="flex items-center gap-4 rounded-xl bg-white border border-navy-100 p-4 shadow-sm">
+            <span class="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-gulf-50 text-gulf-600"><Icon name="pin" class="w-5.5 h-5.5" /></span>
+            <span>
+              <span class="block text-sm text-navy-500">Service area</span>
+              <span class="block font-semibold text-navy-900">Ocean Springs &amp; the MS Gulf Coast</span>
+            </span>
+          </div>
+          <div class="flex items-center gap-4 rounded-xl bg-white border border-navy-100 p-4 shadow-sm">
+            <span class="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-gulf-50 text-gulf-600"><Icon name="shield" class="w-5.5 h-5.5" /></span>
+            <span>
+              <span class="block text-sm text-navy-500">Licensed &amp; insured</span>
+              <span class="block font-semibold text-navy-900">{site.license}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-navy-100">
+        <LeadForm variant="contact" title="Send a message" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

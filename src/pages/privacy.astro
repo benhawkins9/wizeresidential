@@ -1,0 +1,71 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { site } from "../data/site";
+
+const crumbs = [
+  { name: "Home", url: "/" },
+  { name: "Privacy Policy", url: "/privacy" },
+];
+// ⚠️ REVIEW: this is a standard starter policy. Have it reviewed for your
+// jurisdiction and update the effective date before relying on it.
+const effective = "June 2026";
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="How Wise Residential collects, uses, and protects your information."
+  canonicalPath="/privacy"
+  noindex={true}
+>
+  <Breadcrumbs crumbs={crumbs} />
+  <article class="container-page py-12 max-w-3xl prose-local">
+    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-navy-900">Privacy Policy</h1>
+    <p class="text-sm text-navy-500">Effective {effective}</p>
+
+    <p>
+      This Privacy Policy explains how {site.legalName} ("Wise Residential," "we,"
+      "us," "I") collects, uses, and protects information when you visit {site.domain}
+      or contact us. I keep this simple: I only collect what I need to help you,
+      and I never sell your information.
+    </p>
+
+    <h2>Information I collect</h2>
+    <ul>
+      <li><strong>Information you give me.</strong> When you submit a form, call, text, or email, I collect your name, email, phone, service address or city, any photos you send, and details about the work you need.</li>
+      <li><strong>Usage data.</strong> Like most websites, I may collect standard analytics such as pages visited, device, and referring source to improve the site.</li>
+    </ul>
+
+    <h2>How I use it</h2>
+    <ul>
+      <li>To respond to your inquiry and provide the services you request.</li>
+      <li>To prepare your estimate, schedule your service, and follow up about the work.</li>
+      <li>To improve this website and understand how visitors use it.</li>
+    </ul>
+
+    <h2>Sharing</h2>
+    <p>
+      I do not sell your personal information. I may share it with trusted
+      service providers (for example, form processing, email, or analytics
+      tools) solely to operate the business, and only as needed.
+    </p>
+
+    <h2>Cookies & analytics</h2>
+    <p>
+      I may use cookies and privacy-respecting analytics to understand site
+      usage. You can control cookies through your browser settings.
+    </p>
+
+    <h2>Your choices</h2>
+    <p>
+      You may request that I access, correct, or delete your information at any
+      time by emailing <a href={`mailto:${site.email}`}>{site.email}</a>.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions about this policy? Email <a href={`mailto:${site.email}`}>{site.email}</a>
+      or call {site.phone}.
+    </p>
+  </article>
+</BaseLayout>

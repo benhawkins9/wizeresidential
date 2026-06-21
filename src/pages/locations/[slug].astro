@@ -1,0 +1,227 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CTASection from "../../components/CTASection.astro";
+import FAQ from "../../components/FAQ.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import Icon from "../../components/Icon.astro";
+import PageImage from "../../components/PageImage.astro";
+import { locations, resolveNearby } from "../../data/locations";
+import { site } from "../../data/site";
+import {
+  locationServiceSchema,
+  faqSchema,
+  breadcrumbSchema,
+} from "../../lib/schema";
+
+export async function getStaticPaths() {
+  return locations.map((loc) => ({
+    params: { slug: loc.slug },
+    props: { loc },
+  }));
+}
+
+const { loc } = Astro.props;
+
+const services = (await getCollection("services")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const nearbyLinks = loc.nearby
+  .map((slug) => resolveNearby(slug))
+  .filter((x): x is { name: string; href: string } => Boolean(x));
+
+const crumbs = [
+  { name: "Home", url: "/" },
+  { name: "Service Areas", url: "/locations" },
+  { name: loc.name, url: `/locations/${loc.slug}` },
+];
+
+// City-specific FAQs (generated from the city's own data), "near me" optimized.
+const cityFaqs = [
+  {
+    q: `Do you provide handyman services near me in ${loc.name}?`,
+    a: `Yes! I'm a local home-repair and small-job specialist serving all of ${loc.name}, MS. Whether you're near ${loc.landmarks[0]} or anywhere else in town, I provide fast, reliable repairs — from to-do lists to mold and water work.`,
+  },
+  {
+    q: `How much does a handyman charge in ${loc.name}?`,
+    a: `For ${loc.name} homeowners, small jobs use a two-hour minimum — perfect for clearing a to-do list in one visit. For larger projects like mold remediation or carpentry, I provide a detailed written estimate, and the price is the same regardless of your zip code.`,
+  },
+  {
+    q: `Can you handle mold remediation and structural cleaning in ${loc.name}?`,
+    a: `Absolutely. I provide science-based mold removal and EPA-registered structural cleaning for ${loc.name} homes. I focus on finding the moisture source and fixing it so the mold doesn't come back — not just painting over it.`,
+  },
+  {
+    q: `Do you offer water filter maintenance for ${loc.name} homeowners?`,
+    a: `Yes. I service whole-home filtration and under-sink RO systems throughout ${loc.name} — filter swaps, sanitizing, and water-quality testing to keep your family's water clean and safe.`,
+  },
+  {
+    q: `How do I schedule a repair or get an estimate in ${loc.name}?`,
+    a: `The easiest way is to call or text me — ${loc.name} homeowners can often get a ballpark estimate by sending photos of the repair. I prioritize local calls and can usually fit you in within 24–48 hours.`,
+  },
+];
+
+const schema = [
+  locationServiceSchema(loc.slug),
+  faqSchema(cityFaqs),
+  breadcrumbSchema(crumbs),
+].filter(Boolean);
+---
+
+<BaseLayout
+  title={`Handyman in ${loc.name}, MS | Home Repair Near Me`}
+  description={`Handyman & home repair in ${loc.name}, MS — the licensed, insured local pro ${loc.name} homeowners call for repairs, mold remediation, water filtration, drywall & carpentry. Free estimate + $10 off.`}
+  canonicalPath={`/locations/${loc.slug}`}
+  schema={schema}
+>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <!-- Hero -->
+  <section class="container-page pt-8 pb-10 md:pt-10">
+    <div class="max-w-3xl">
+      <span class="inline-flex items-center gap-2 rounded-full bg-gulf-50 text-gulf-700 px-3 py-1 text-xs font-semibold">
+        <Icon name="pin" class="w-4 h-4" />
+        {loc.name} · {loc.county}
+      </span>
+      <h1 class="mt-4 text-4xl md:text-5xl font-extrabold tracking-tight text-navy-900">
+        Handyman &amp; Home Repair in {loc.name}, Mississippi
+      </h1>
+      <p class="mt-3 text-lg font-medium text-gulf-700">
+        Licensed, insured repairs, mold remediation &amp; water filtration for {loc.name} homeowners
+      </p>
+      <p class="mt-4 text-lg text-navy-600 leading-relaxed">{loc.intro}</p>
+      <div class="mt-7 flex flex-col sm:flex-row gap-3">
+        <a href="/estimate" class="btn btn-primary">Free {loc.name} Estimate <Icon name="arrow" class="w-4.5 h-4.5" /></a>
+        <a href={site.phoneHref} class="btn btn-ghost">
+          <Icon name="phone" class="w-4.5 h-4.5 text-gulf-600" /> {site.phone}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coastal banner -->
+  <div class="container-page pb-2">
+    <PageImage id={`location-${loc.slug}`} alt={`Homes on the Gulf Coast near ${loc.name}, Mississippi`} class="w-full h-48 md:h-64 object-cover rounded-2xl" loading="eager" widths={[768, 1216, 1600]} sizes="(max-width: 1280px) 100vw, 1216px" />
+  </div>
+
+  <!-- Why call us here -->
+  <section class="container-page py-10">
+    <div class="grid lg:grid-cols-3 gap-8">
+      <div class="lg:col-span-2">
+        <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-navy-900">
+          Why {loc.name} homeowners call Wise Residential
+        </h2>
+        <p class="mt-4 text-lg text-navy-600 leading-relaxed">{loc.marketNote}</p>
+        <p class="mt-4 text-navy-600 leading-relaxed">
+          Whether your home is near {loc.landmarks[0]}, {loc.landmarks[1]}, or
+          anywhere across {loc.name}, you get the same thing every time: on-time
+          arrivals, one fair price, and a job site left cleaner than I found it.
+          Just {loc.driveTime} from my home base in Ocean Springs.
+        </p>
+      </div>
+      <div class="rounded-2xl bg-navy-50 p-6">
+        <h3 class="text-sm font-bold uppercase tracking-wider text-navy-500">
+          {loc.name} at a glance
+        </h3>
+        <dl class="mt-4 space-y-3 text-sm">
+          <div class="flex justify-between gap-4">
+            <dt class="text-navy-500">County</dt>
+            <dd class="font-semibold text-navy-900 text-right">{loc.county}</dd>
+          </div>
+          <div class="flex justify-between gap-4">
+            <dt class="text-navy-500">Population</dt>
+            <dd class="font-semibold text-navy-900 text-right">{loc.population}</dd>
+          </div>
+          <div class="flex justify-between gap-4">
+            <dt class="text-navy-500">From Ocean Springs</dt>
+            <dd class="font-semibold text-navy-900 text-right">{loc.driveTime}</dd>
+          </div>
+        </dl>
+        <div class="mt-4 pt-4 border-t border-navy-200">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-navy-500">Local anchors</h4>
+          <ul class="mt-2 flex flex-wrap gap-1.5">
+            {loc.landmarks.map((l) => (
+              <li class="text-xs bg-white rounded-full px-2.5 py-1 text-navy-700 border border-navy-100">{l}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Common jobs here -->
+  <section class="bg-sand-wash">
+    <div class="container-page py-14">
+      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-navy-900">
+        Common repairs I handle in {loc.name}
+      </h2>
+      <p class="mt-3 text-navy-600 max-w-2xl">
+        Every home is different, but in {loc.name} these are the calls I get
+        most:
+      </p>
+      <div class="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          loc.commonJobs.map((job) => (
+            <div class="flex items-center gap-3 rounded-xl bg-white border border-navy-100 p-4 shadow-sm">
+              <Icon name="check-circle" class="w-5 h-5 text-gulf-600 shrink-0" />
+              <span class="text-navy-800 font-medium">{job}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Services available in this city -->
+  <section class="container-page py-14 md:py-16">
+    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-navy-900">
+      Services available in {loc.name}
+    </h2>
+    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        services.map((s) => (
+          <a
+            href={`/locations/${loc.slug}/${s.id}`}
+            class="group rounded-2xl bg-white border border-navy-100 p-5 shadow-sm hover:shadow-md hover:border-gulf-200 transition-all"
+          >
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gulf-50 text-gulf-600 group-hover:bg-gulf-500 group-hover:text-white transition-colors">
+              <Icon name={s.data.icon} class="w-5 h-5" />
+            </span>
+            <h3 class="mt-3 font-bold text-navy-900 group-hover:text-gulf-700">
+              {s.data.shortTitle} in {loc.name}
+            </h3>
+            <p class="mt-1 text-sm text-navy-600">{s.data.tagline}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Nearby -->
+  {
+    nearbyLinks.length > 0 && (
+      <section class="container-page pb-8">
+        <div class="rounded-2xl border border-navy-100 bg-white p-6 shadow-sm">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-navy-500">
+            Also serving nearby
+          </h2>
+          <div class="mt-3 flex flex-wrap gap-2.5">
+            {nearbyLinks.map((n) => (
+              <a
+                href={n.href}
+                class="inline-flex items-center gap-1.5 rounded-full bg-navy-50 hover:bg-gulf-50 text-navy-800 hover:text-gulf-700 px-4 py-2 text-sm font-medium transition-colors"
+              >
+                <Icon name="pin" class="w-4 h-4" />
+                {n.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <FAQ faqs={cityFaqs} heading={`Home repair in ${loc.name}: common questions`} />
+
+  <CTASection heading={`Need a repair in ${loc.name}? Let's get it done.`} />
+</BaseLayout>

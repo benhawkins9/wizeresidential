@@ -1,0 +1,38 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+  href: string;
+  icon: string;
+  title: string;
+  tagline: string;
+  summary: string;
+  featured?: boolean;
+}
+const { href, icon, title, tagline, summary, featured = false } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={[
+    "group relative flex flex-col rounded-2xl p-6 border transition-all duration-200 hover:-translate-y-0.5",
+    featured
+      ? "bg-white border-gulf-200 shadow-sm hover:shadow-md hover:border-gulf-300"
+      : "bg-white border-navy-100 shadow-sm hover:shadow-md hover:border-navy-200",
+  ]}
+>
+  <span
+    class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gulf-50 text-gulf-600 group-hover:bg-gulf-500 group-hover:text-white transition-colors"
+  >
+    <Icon name={icon} class="w-6 h-6" />
+  </span>
+  <h3 class="mt-4 text-lg font-bold text-navy-900">{title}</h3>
+  <p class="mt-1 text-sm font-medium text-gulf-700">{tagline}</p>
+  <p class="mt-2 text-sm text-navy-600 leading-relaxed flex-1">{summary}</p>
+  <span
+    class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900 group-hover:text-gulf-700"
+  >
+    Learn more
+    <Icon name="arrow" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+  </span>
+</a>

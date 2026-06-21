@@ -1,0 +1,13 @@
+{
+  "name": "Wise Residential",
+  "short_name": "Wise",
+  "description": "Licensed home repair & handyman service — Ocean Springs, MS Gulf Coast",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#11161b",
+  "theme_color": "#e8740f",
+  "icons": [
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

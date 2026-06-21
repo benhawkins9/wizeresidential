@@ -1,0 +1,65 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ServiceCard from "../../components/ServiceCard.astro";
+import CTASection from "../../components/CTASection.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import Icon from "../../components/Icon.astro";
+import { breadcrumbSchema } from "../../lib/schema";
+
+const services = (await getCollection("services")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const crumbs = [
+  { name: "Home", url: "/" },
+  { name: "Services", url: "/services" },
+];
+---
+
+<BaseLayout
+  title="Home Repair & Handyman Services in Ocean Springs, MS"
+  description="Wise Residential's services: small-job handyman work, mold remediation, water filtration, drywall & painting, carpentry & wood rot, and door & window repair — across Ocean Springs and the MS Gulf Coast."
+  canonicalPath="/services"
+  schema={[breadcrumbSchema(crumbs)]}
+>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <section class="container-page pt-8 pb-12 md:pt-12">
+    <div class="max-w-3xl">
+      <span class="eyebrow">Services</span>
+      <h1 class="mt-3 text-4xl md:text-5xl font-extrabold tracking-tight text-navy-900">
+        Home repair &amp; handyman services on the Gulf Coast
+      </h1>
+      <p class="mt-5 text-lg text-navy-600 leading-relaxed">
+        One trusted, licensed local pro for the whole house — from the small jobs
+        nobody else will take to the specialized work that keeps a coastal home
+        healthy. Pick what you need, or hand me the list. Every job starts with a
+        free, honest estimate.
+      </p>
+      <div class="mt-7 flex flex-col sm:flex-row gap-3">
+        <a href="/estimate" class="btn btn-primary">Get a Free Estimate <Icon name="arrow" class="w-4.5 h-4.5" /></a>
+        <a href="/contact" class="btn btn-ghost">Talk to Chris</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-page pb-16 md:pb-20">
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        services.map((s) => (
+          <ServiceCard
+            href={`/services/${s.id}`}
+            icon={s.data.icon}
+            title={s.data.title}
+            tagline={s.data.tagline}
+            summary={s.data.summary}
+            featured={s.data.featured}
+          />
+        ))
+      }
+    </div>
+  </section>
+
+  <CTASection variant="gulf" />
+</BaseLayout>

@@ -1,0 +1,318 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import LocationCard from "../components/LocationCard.astro";
+import CTASection from "../components/CTASection.astro";
+import FAQ from "../components/FAQ.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Icon from "../components/Icon.astro";
+import PageImage from "../components/PageImage.astro";
+import { site } from "../data/site";
+import { locations } from "../data/locations";
+import { faqSchema } from "../lib/schema";
+import chris from "../assets/brand/chris-wise.jpg";
+
+const services = (await getCollection("services")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+const featuredCities = locations.slice(0, 6);
+
+const process = [
+  {
+    icon: "phone",
+    title: "Tell me about the job",
+    text: "Call, text, or send a few photos. I'll ask a couple of questions and give you a clear, honest estimate — no pressure, no guessing games.",
+  },
+  {
+    icon: "check-circle",
+    title: "One fair price, scheduled",
+    text: "You get a written estimate using one fair pricing formula — same rate no matter your zip code — and a real appointment, not a vague window.",
+  },
+  {
+    icon: "home",
+    title: "Done right, cleaned up",
+    text: "I show up on time, do the work to manufacturer spec, and leave your home cleaner than I found it. That's the whole promise.",
+  },
+];
+
+// Homepage FAQs (from the SEO plan), optimized for "near me" + local intent.
+const homeFaqs = [
+  {
+    q: "Do you offer handyman services near me in Ocean Springs?",
+    a: "Yes! I provide a full range of home repair and maintenance services throughout Ocean Springs, MS, including Gulf Hills, St. Martin, and the surrounding coastal neighborhoods — from small jobs to mold remediation and water filtration.",
+  },
+  {
+    q: "Are you a licensed and insured handyman in Jackson County?",
+    a: "Absolutely. For your peace of mind, I'm fully licensed (MS Lic. #1500778) and insured to perform home repairs, mold remediation, and water filtration work across Ocean Springs and the neighboring cities.",
+  },
+  {
+    q: "How do you handle pricing for small vs. large jobs?",
+    a: "I keep it simple and fair. Small jobs use a two-hour minimum so you can clear a to-do list efficiently. For larger projects like mold remediation or carpentry, I provide a detailed written estimate up front — and the same price regardless of your zip code.",
+  },
+  {
+    q: "What makes your home repair service different from others near me?",
+    a: "I combine general handyman skills with specialized expertise in EPA-registered structural cleaning and water quality. I don't just patch the problem — I focus on the health and longevity of your home. And after 26 years in law enforcement, showing up on time and doing it right is just how I work.",
+  },
+  {
+    q: "Do you provide emergency home repairs in Ocean Springs?",
+    a: "I prioritize my local Ocean Springs clients for urgent needs like leaking fixtures or active wood rot. While I work on a schedule, I always try to leave room for neighbors with pressing repairs — just call or text and I'll do my best to fit you in.",
+  },
+];
+---
+
+<BaseLayout
+  title="Handyman in Ocean Springs, MS | Home Repair Near Me"
+  description="Wise Residential is the licensed, insured handyman & home-repair service Ocean Springs trusts. Small jobs, mold remediation, water filtration, drywall & carpentry — done cleanly and on time. Free estimate + $10 off."
+  canonicalPath="/"
+  schema={[faqSchema(homeFaqs)].filter(Boolean)}
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-navy-950 text-white">
+    <div
+      class="absolute inset-0 opacity-[0.18]"
+      style="background-image: radial-gradient(circle at 18% 22%, #e8740f 0, transparent 42%), radial-gradient(circle at 85% 12%, #2f8db4 0, transparent 40%);"
+    >
+    </div>
+    <PageImage id="home-hero" alt="A well-kept home on the Mississippi Gulf Coast" class="absolute inset-0 w-full h-full object-cover opacity-25" loading="eager" sizes="100vw" widths={[768, 1280, 1920]} />
+    <div class="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-950/85 to-navy-900/60"></div>
+    <div class="container-page relative pt-16 pb-24 md:pt-24 md:pb-32">
+      <div class="max-w-3xl">
+        <span
+          class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-sand-200 ring-1 ring-white/15"
+        >
+          <Icon name="shield" class="w-4 h-4" />
+          Licensed &amp; Insured · Ocean Springs, MS
+        </span>
+        <h1 class="mt-5 text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.05]">
+          Reliable home repair &amp; handyman services in Ocean Springs
+        </h1>
+        <p class="mt-5 text-lg md:text-xl text-navy-200 leading-relaxed max-w-2xl">
+          Your local partner for expert repairs, mold remediation, and water
+          filtration. One trusted pro for the whole to-do list — on time, fairly
+          priced, and your home left cleaner than I found it.
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a href="/estimate" class="btn btn-primary text-base">
+            Get a Free Estimate
+            <Icon name="arrow" class="w-5 h-5" />
+          </a>
+          <a href={site.phoneHref} class="btn btn-white text-base">
+            <Icon name="phone" class="w-5 h-5 text-gulf-600" />
+            {site.phone}
+          </a>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-navy-300">
+          <span class="inline-flex items-center gap-2">
+            <Icon name="check-circle" class="w-4.5 h-4.5 text-sand-400" />
+            Free written estimates
+          </span>
+          <span class="inline-flex items-center gap-2">
+            <Icon name="check-circle" class="w-4.5 h-4.5 text-sand-400" />
+            One fair price, any zip code
+          </span>
+          <span class="inline-flex items-center gap-2">
+            <Icon name="check-circle" class="w-4.5 h-4.5 text-sand-400" />
+            $10 off your first service
+          </span>
+        </div>
+      </div>
+    </div>
+    <!-- roofline divider -->
+    <div class="absolute bottom-0 left-0 right-0 leading-[0]" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" class="w-full h-12 md:h-20" preserveAspectRatio="none">
+        <path
+          fill="#ffffff"
+          d="M0 40c180 30 360 30 540 12s360-54 540-40 240 44 360 44v24H0z"
+        ></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Trust stats -->
+  <section class="container-page -mt-2 pb-4">
+    <div
+      class="grid grid-cols-2 md:grid-cols-4 gap-4 rounded-2xl bg-white border border-navy-100 shadow-sm p-6 md:p-8"
+    >
+      <div class="text-center">
+        <p class="text-2xl md:text-3xl font-extrabold text-navy-900">Licensed</p>
+        <p class="text-xs md:text-sm text-navy-500 mt-1">&amp; fully insured</p>
+      </div>
+      <div class="text-center">
+        <p class="text-2xl md:text-3xl font-extrabold text-navy-900">Local</p>
+        <p class="text-xs md:text-sm text-navy-500 mt-1">Ocean Springs based</p>
+      </div>
+      <div class="text-center">
+        <p class="text-2xl md:text-3xl font-extrabold text-navy-900">2&#8209;Hour</p>
+        <p class="text-xs md:text-sm text-navy-500 mt-1">small-job minimum</p>
+      </div>
+      <div class="text-center">
+        <p class="text-2xl md:text-3xl font-extrabold text-navy-900">$10 Off</p>
+        <p class="text-xs md:text-sm text-navy-500 mt-1">your first service</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro / value prop -->
+  <section class="container-page py-16 md:py-20">
+    <div class="max-w-3xl mx-auto text-center">
+      <span class="eyebrow">A healthier home</span>
+      <h2 class="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight text-navy-900">
+        More than a handyman — a healthier home
+      </h2>
+      <p class="mt-4 text-lg text-navy-600 leading-relaxed">
+        Most repair guys just patch the problem. I look deeper. With specialized
+        skills in EPA-registered mold remediation and water filtration on top of
+        everyday repairs, Wise Residential keeps your Gulf Coast home safe,
+        sound, and healthy — one honest fix at a time.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="bg-sand-wash">
+    <div class="container-page py-16 md:py-20">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        <div class="max-w-2xl">
+          <span class="eyebrow">What I do</span>
+          <h2 class="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight text-navy-900">
+            Specialized solutions for every room in your house
+          </h2>
+          <p class="mt-3 text-lg text-navy-600">
+            One trusted local pro for repairs, mold and water work, drywall,
+            carpentry, and the small jobs nobody else will take.
+          </p>
+        </div>
+        <a href="/services" class="btn btn-ghost shrink-0">All services <Icon name="arrow" class="w-4 h-4" /></a>
+      </div>
+      <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          services.map((s) => (
+            <ServiceCard
+              href={`/services/${s.id}`}
+              icon={s.data.icon}
+              title={s.data.shortTitle}
+              tagline={s.data.tagline}
+              summary={s.data.summary}
+              featured={s.data.featured}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder / why us -->
+  <section class="container-page py-16 md:py-20">
+    <div class="grid lg:grid-cols-2 gap-10 items-center">
+      <div class="relative">
+        <Image
+          src={chris}
+          alt="Chris Wise, owner of Wise Residential"
+          class="rounded-3xl shadow-xl w-full max-w-md mx-auto"
+          widths={[400, 600, 800]}
+          sizes="(max-width: 1024px) 100vw, 480px"
+        />
+        <div
+          class="absolute -z-10 -bottom-4 -left-4 w-40 h-40 rounded-3xl bg-sand-200/70 blur-2xl"
+          aria-hidden="true"
+        >
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow">Why Wise Residential</span>
+        <h2 class="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight text-navy-900">
+          The discipline of a career in service — now for your home
+        </h2>
+        <p class="mt-4 text-lg text-navy-600 leading-relaxed">
+          {site.founder.bio}
+        </p>
+        <ul class="mt-6 space-y-3">
+          {
+            [
+              "On-time arrivals — and a call if anything ever changes",
+              "One fair price, the same no matter your zip code",
+              "No pressure for work you don't need, ever",
+              "Your home treated with respect and left cleaner than I found it",
+            ].map((point) => (
+              <li class="flex items-start gap-3">
+                <Icon name="check-circle" class="w-5.5 h-5.5 text-gulf-600 shrink-0 mt-0.5" />
+                <span class="text-navy-800">{point}</span>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="mt-7 flex gap-3">
+          <a href="/about" class="btn btn-ghost">Meet Chris</a>
+          <a href="/estimate" class="btn btn-primary">Get a Free Estimate</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="bg-navy-900 text-white">
+    <div class="container-page py-16 md:py-20">
+      <div class="text-center max-w-2xl mx-auto">
+        <span class="eyebrow text-sand-300">How it works</span>
+        <h2 class="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight">
+          Simple, honest, and on schedule
+        </h2>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {
+          process.map((step, i) => (
+            <div class="relative rounded-2xl bg-white/5 ring-1 ring-white/10 p-6">
+              <span class="absolute -top-3 left-6 inline-flex items-center justify-center w-8 h-8 rounded-full bg-sand-400 text-navy-950 text-sm font-bold">
+                {i + 1}
+              </span>
+              <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/10 text-sand-300 mt-2">
+                <Icon name={step.icon} class="w-6 h-6" />
+              </span>
+              <h3 class="mt-4 text-lg font-bold text-white">{step.title}</h3>
+              <p class="mt-2 text-navy-200 leading-relaxed">{step.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Service areas -->
+  <section class="bg-sand-wash">
+    <div class="container-page py-16 md:py-20">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        <div class="max-w-2xl">
+          <span class="eyebrow">Where I work</span>
+          <h2 class="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight text-navy-900">
+            Proudly serving Ocean Springs &amp; the surrounding coast
+          </h2>
+          <p class="mt-3 text-lg text-navy-600">
+            Gautier · Biloxi · St. Martin · Vancleave · Gulf Hills · Moss Point — and the rest of the Gulf Coast.
+          </p>
+        </div>
+        <a href="/locations" class="btn btn-ghost shrink-0">All areas <Icon name="arrow" class="w-4 h-4" /></a>
+      </div>
+      <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          featuredCities.map((c) => (
+            <LocationCard
+              href={`/locations/${c.slug}`}
+              name={c.name}
+              county={c.county}
+              driveTime={c.driveTime}
+              blurb={c.blurb}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <Testimonials />
+
+  <FAQ faqs={homeFaqs} heading="Home repair questions, answered" />
+
+  <CTASection />
+</BaseLayout>

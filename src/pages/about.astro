@@ -1,0 +1,136 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CTASection from "../components/CTASection.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import Icon from "../components/Icon.astro";
+import { site } from "../data/site";
+import { breadcrumbSchema, webPageSchema } from "../lib/schema";
+import chris from "../assets/brand/chris-wise.jpg";
+
+const crumbs = [
+  { name: "Home", url: "/" },
+  { name: "About", url: "/about" },
+];
+
+const values = [
+  { icon: "clock", title: "On time, every time", text: "I show up when I say I will — and if anything ever changes, you get a call before it does. Your time matters as much as mine." },
+  { icon: "check-circle", title: "One fair price", text: "The same fair pricing formula for everyone, no matter your zip code or your house. No hidden fees, and never any pressure for work you don't need." },
+  { icon: "shield", title: "Licensed & insured", text: "Fully licensed (MS #1500778) and insured, so the work is done to code and you're protected. Repairs are done to manufacturer spec — measured twice, done right." },
+  { icon: "home", title: "Respect for your home", text: "I plan first, keep the site tidy, communicate throughout, and leave your home cleaner than I found it. That's the Golden Rule, applied to home repair." },
+];
+---
+
+<BaseLayout
+  title="About Chris Wise | Wise Residential, Ocean Springs"
+  description="Meet Chris Wise — owner of Wise Residential. A former framer, Air Force National Guard veteran, and retired 26-year law-enforcement supervisor bringing real discipline to home repair in Ocean Springs, MS."
+  canonicalPath="/about"
+  schema={[breadcrumbSchema(crumbs), webPageSchema("AboutPage", { name: "About Wise Residential", url: "/about", description: site.founder.bio })]}
+>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <section class="container-page pt-8 pb-12 md:pt-12">
+    <div class="max-w-3xl">
+      <span class="eyebrow">About</span>
+      <h1 class="mt-3 text-4xl md:text-5xl font-extrabold tracking-tight text-navy-900">
+        A healthy home starts with a “Wise” decision
+      </h1>
+      <p class="mt-5 text-lg text-navy-600 leading-relaxed">
+        Wise Residential isn't a franchise or a call center. It's me — Chris Wise
+        — and a promise that home repair can be done honestly, cleanly, and on
+        schedule. Here's how I got here, and why I do it this way.
+      </p>
+    </div>
+  </section>
+
+  <!-- Founder -->
+  <section class="container-page pb-12">
+    <div class="grid lg:grid-cols-3 gap-8 items-start">
+      <div class="lg:col-span-2 prose-local max-w-none">
+        <h2>Meet Chris Wise</h2>
+        <p>
+          First things first: I'm a husband to my wife Alisha and a dad to three
+          young kids. Our family runs on the Golden Rule — treat people the way
+          you want to be treated — and that's exactly how I run Wise Residential.
+        </p>
+        <p>
+          I started framing houses at 18, where I learned the rule that still
+          guides every job: <em>do it right the first time, keep it level and
+          true.</em> I served four years in the Air Force National Guard, which
+          drilled in attention to detail, then spent 26 years in law enforcement,
+          retiring as a shift supervisor. Reliable arrivals, clear expectations,
+          and accountability aren't slogans for me — they're how I've worked my
+          entire life.
+        </p>
+        <p>
+          So why home repair? Because I kept hearing the same horror stories:
+          contractors who didn't show, hidden fees, jobs left half-finished. I
+          knew I could offer the opposite — combining real construction skill with
+          the discipline of a career in service. That's the gap Wise Residential
+          fills.
+        </p>
+        <p>
+          On every job, I plan first and measure twice, keep the site tidy,
+          communicate throughout, and finish what I promised. I don't pressure you
+          into work you don't need, and I never cut corners on safety. One fair
+          price, the same for everyone — and your home left cleaner than I found
+          it.
+        </p>
+      </div>
+      <aside class="rounded-3xl bg-navy-900 text-white p-7 shadow-xl">
+        <Image
+          src={chris}
+          alt="Chris Wise, owner of Wise Residential"
+          class="rounded-2xl w-full"
+          widths={[300, 480, 600]}
+          sizes="(max-width: 1024px) 100vw, 320px"
+        />
+        <dl class="mt-6 space-y-4 text-sm">
+          <div>
+            <dt class="text-navy-400">Owner</dt>
+            <dd class="font-semibold text-lg">{site.founder.name}</dd>
+            <dd class="text-navy-300">{site.founder.role}</dd>
+          </div>
+          <div>
+            <dt class="text-navy-400">Based in</dt>
+            <dd class="font-semibold">Ocean Springs, Mississippi</dd>
+          </div>
+          <div>
+            <dt class="text-navy-400">License</dt>
+            <dd class="font-semibold">{site.license}</dd>
+          </div>
+        </dl>
+        <a href="/estimate" class="btn btn-primary w-full mt-6">Get a Free Estimate</a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="bg-sand-wash">
+    <div class="container-page py-16">
+      <div class="max-w-2xl">
+        <span class="eyebrow">What you can count on</span>
+        <h2 class="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight text-navy-900">
+          How I work
+        </h2>
+      </div>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2">
+        {
+          values.map((v) => (
+            <div class="flex items-start gap-4 rounded-2xl bg-white border border-navy-100 p-6 shadow-sm">
+              <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gulf-50 text-gulf-600 shrink-0">
+                <Icon name={v.icon} class="w-6 h-6" />
+              </span>
+              <div>
+                <h3 class="text-lg font-bold text-navy-900">{v.title}</h3>
+                <p class="mt-1.5 text-navy-600 leading-relaxed">{v.text}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>

@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { site } from "../data/site";
+
+const crumbs = [
+  { name: "Home", url: "/" },
+  { name: "Accessibility", url: "/accessibility" },
+];
+// ⚠️ REVIEW: starter accessibility statement adapted from the live site. Confirm
+// wording and contact details before launch.
+const effective = "June 2026";
+---
+
+<BaseLayout
+  title="Accessibility Statement"
+  description="Wise Residential is committed to keeping this website accessible. If you encounter a barrier, contact us and we'll help fix it quickly."
+  canonicalPath="/accessibility"
+>
+  <Breadcrumbs crumbs={crumbs} />
+  <article class="container-page py-12 max-w-3xl prose-local">
+    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-navy-900">Accessibility Statement</h1>
+    <p class="text-sm text-navy-500">Effective {effective}</p>
+
+    <p>
+      I want everyone to be able to use {site.domain}, including people who rely
+      on assistive technology. I strive to follow widely accepted guidelines like
+      the Web Content Accessibility Guidelines (WCAG) 2.1 AA, and I work to keep
+      this site usable, readable, and navigable for all visitors.
+    </p>
+
+    <h2>What I'm doing</h2>
+    <ul>
+      <li>Using clear structure, headings, and descriptive link text.</li>
+      <li>Maintaining strong color contrast and readable type.</li>
+      <li>Providing text alternatives for meaningful images.</li>
+      <li>Supporting keyboard navigation and screen readers where possible.</li>
+    </ul>
+
+    <h2>Found a barrier?</h2>
+    <p>
+      If you encounter any part of this site that's difficult to use, please tell
+      me — I'll do my best to fix it quickly and to help you get the information
+      or service you need in the meantime.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Email <a href={`mailto:${site.email}`}>{site.email}</a> or call
+      {site.phone}. Hours: {site.hoursLabel}.
+    </p>
+  </article>
+</BaseLayout>

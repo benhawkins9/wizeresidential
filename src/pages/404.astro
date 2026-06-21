@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout
+  title="Page Not Found"
+  description="That page drifted out to sea. Let's get you back on course."
+  noindex={true}
+>
+  <section class="container-page py-24 md:py-32 text-center">
+    <span class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gulf-50 text-gulf-600 mx-auto">
+      <Icon name="map" class="w-8 h-8" />
+    </span>
+    <p class="mt-6 text-sm font-bold uppercase tracking-widest text-gulf-600">404</p>
+    <h1 class="mt-2 text-4xl md:text-5xl font-extrabold tracking-tight text-navy-900">
+      This page drifted out to sea
+    </h1>
+    <p class="mt-4 text-lg text-navy-600 max-w-md mx-auto">
+      The page you're looking for isn't here. Let's get you back on course.
+    </p>
+    <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="/" class="btn btn-primary">Back to home</a>
+      <a href="/services" class="btn btn-ghost">Browse services</a>
+      <a href={site.phoneHref} class="btn btn-ghost">
+        <Icon name="phone" class="w-4.5 h-4.5 text-gulf-600" /> {site.phone}
+      </a>
+    </div>
+  </section>
+</BaseLayout>
