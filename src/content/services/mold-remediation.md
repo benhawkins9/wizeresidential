@@ -23,8 +23,8 @@ deliverables:
   - "Borate treatment & preventative measures"
   - "Correcting incomplete prior mold work (discounted)"
 faqs:
-  - q: "Who provides certified mold removal near me in Ocean Springs?"
-    a: "I do — Wise Residential offers professional, science-based mold remediation and structural cleaning for homeowners across Ocean Springs and the Mississippi Gulf Coast, using EPA-approved products and proper containment."
+  - q: "How long does mold remediation take?"
+    a: "It depends on the size and how much material has to come out. A small, contained spot can be a single day; larger jobs with demolition and structural drying take longer. You'll get a realistic timeline in your written estimate before any work starts."
   - q: "Do you treat mold in HVAC systems and mini-splits?"
     a: "Yes. Mold in your air handler or mini-split recirculates spores through the whole house, so I clean and treat HVAC systems and mini-splits as part of a complete remediation — not just the visible surfaces."
   - q: "Do I need to leave my house during mold cleaning?"

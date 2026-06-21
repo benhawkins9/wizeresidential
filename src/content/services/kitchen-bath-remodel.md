@@ -23,8 +23,8 @@ deliverables:
   - "Flooring (LVP, tile & more)"
   - "Lighting, mirrors & finishing touches"
 faqs:
-  - q: "Do you do kitchen and bath remodeling near me in Ocean Springs?"
-    a: "Yes — I handle single-room kitchen and bathroom updates and remodels across Ocean Springs and Jackson County, from a fresh vanity and tile to cabinets, counters, and flooring."
+  - q: "Where do I start with a kitchen or bath project?"
+    a: "Send me a few photos and tell me what's bugging you about the space. I'll walk you through the options — from a quick refresh (fixtures, vanity, paint, hardware) to a full remodel — with a written estimate for each, and no pressure to go bigger than you want."
   - q: "Can you do a smaller refresh instead of a full gut remodel?"
     a: "Absolutely. Plenty of homeowners just want a refresh — new fixtures, a vanity, paint, and updated hardware make a big difference for a fraction of a full remodel. I'll scope it honestly to your budget."
   - q: "Do you handle the plumbing and electrical too?"

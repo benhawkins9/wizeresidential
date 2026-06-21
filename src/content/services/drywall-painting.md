@@ -23,8 +23,8 @@ deliverables:
   - "Caulking & sealing for clean lines"
   - "Accent walls & ceiling refreshes"
 faqs:
-  - q: "Who does drywall repair near me in Ocean Springs?"
-    a: "I do — Wise Residential provides expert sheetrock patching, texture matching, and interior painting for homes across Ocean Springs and Jackson County. The goal is a repair you can't find afterward."
+  - q: "How long does a drywall repair take?"
+    a: "Most patches are a single visit, but joint compound needs to dry between coats, so a larger repair can span two short trips. Texture and paint matching add a little time — the payoff is a wall you genuinely can't tell was ever damaged."
   - q: "Can you match my existing wall texture?"
     a: "Yes. Popcorn, orange peel, knockdown, or smooth — I match the surrounding texture so a patch blends in instead of standing out under the light."
   - q: "Can you fix water-stained or sagging drywall?"

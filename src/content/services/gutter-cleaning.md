@@ -23,8 +23,8 @@ deliverables:
   - "Re-securing loose or sagging runs"
   - "Fascia & soffit inspection"
 faqs:
-  - q: "Do you do gutter cleaning near me in Ocean Springs?"
-    a: "Yes — I clean, flush, and repair gutters across Ocean Springs and the surrounding Gulf Coast, and install guards to cut down on future clogs. It's one of the most overlooked ways to protect a coastal home."
+  - q: "What happens if I never clean my gutters?"
+    a: "On the coast, clogged gutters overflow into your fascia and soffits and dump water against the foundation — which is exactly how wood rot, leaks, and foundation problems start. Two cleanings a year is cheap insurance against repairs that cost many times more."
   - q: "How often should Gulf Coast gutters be cleaned?"
     a: "At least twice a year, and always before hurricane season. Heavy coastal rain and lots of tree cover mean gutters here clog faster than most — and a clog during a storm is when the damage happens."
   - q: "Are gutter guards worth it?"

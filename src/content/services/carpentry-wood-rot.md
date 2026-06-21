@@ -23,8 +23,8 @@ deliverables:
   - "HardiePlank & wood siding repair"
   - "Borate treatment & sealing"
 faqs:
-  - q: "Who handles wood rot repair near me in Ocean Springs?"
-    a: "I specialize in coastal carpentry and wood rot repair for homeowners in Ocean Springs, St. Martin, and Gautier. I find the moisture source, replace the damaged boards, and treat what's salvageable to protect your home's structure."
+  - q: "Can you repair just the rotted section, or does it all need replacing?"
+    a: "Usually just the affected section. I cut back to sound wood, replace what's gone with durable materials, and treat the area so the rot doesn't spread — far cheaper than tearing out a whole deck or fascia run. If it has reached the framing, I'll tell you straight."
   - q: "Can you fix rotted fascia boards and soffits?"
     a: "Yes. Coastal humidity loves eaves and trim. I replace rotted fascia, soffits, and exterior trim with durable materials chosen to stand up to the Gulf Coast climate."
   - q: "Do you repair rotted deck boards and fence posts?"

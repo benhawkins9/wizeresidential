@@ -23,8 +23,8 @@ deliverables:
   - "Window hardware (latches, balances)"
   - "Smart-lock & video-doorbell installation"
 faqs:
-  - q: "Is there a door repair specialist near me in Ocean Springs?"
-    a: "Yes — I provide professional door repair across Ocean Springs and Jackson County, including sticking doors, sagging hinges, broken locks, and misaligned entry doors."
+  - q: "Can you repair a door or window instead of replacing it?"
+    a: "Almost always — and for a fraction of replacement cost. Sticking doors, worn sliding-door rollers, broken latches, torn screens, and drafty seals are repairs, not replacements. I only recommend replacing when a repair truly won't hold."
   - q: "Can you replace window screens and patio-door screens?"
     a: "I can. I offer on-site screen repair and replacement for windows and sliding patio doors, so you can keep the bugs out and let the Gulf breeze in."
   - q: "How can I stop drafts around my doors and windows?"

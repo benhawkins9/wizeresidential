@@ -23,8 +23,8 @@ deliverables:
   - "New system installation & custom build-outs"
   - "Maintenance plans from $18/mo (see Service Packages)"
 faqs:
-  - q: "Where can I find water filter maintenance near me in Ocean Springs?"
-    a: "Right here. I provide scheduled service for whole-home, under-sink RO, and shower-head systems throughout Ocean Springs, Gautier, Biloxi, and the surrounding coast — including filter swaps, sanitizing, and water testing."
+  - q: "How often does a water filtration system need servicing?"
+    a: "Most systems need filter or membrane swaps once or twice a year — sediment pre-filters sometimes more, depending on your water. I'll set the right schedule for your system and usage, or put you on a maintenance plan so you never have to track it."
   - q: "How much does a maintenance plan cost?"
     a: "Whole-home plans run $150–$520/year depending on frequency (or $22–$45/month); under-sink/RO plans are $125–$380/year (or $18–$32/month). Filters and membranes are billed at current market pricing. See the full breakdown on Service Packages."
   - q: "Can you service a water filtration system you didn't install?"

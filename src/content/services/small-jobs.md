@@ -23,8 +23,8 @@ deliverables:
   - "Picture, blind & heavy-mirror hanging"
   - "General honey-do / to-do lists"
 faqs:
-  - q: "Is there a handyman near me who takes small jobs in Ocean Springs?"
-    a: "Yes — small jobs are my specialty. Whether it's TV mounting in Ocean Springs or a leaky faucet in Gautier, no job is too small. Most visits start with a $90 service call that covers travel, setup, and your first hour-plus of work, so you can knock out several small tasks in one trip."
+  - q: "What kinds of small jobs do you take on?"
+    a: "Just about anything on a to-do list — TV mounting, ceiling fans, faucets and light fixtures, furniture and playset assembly, smart-home devices, and hanging mirrors, blinds, and shelving. If it's small and nagging, it's exactly what I'm for, and no job is too small."
   - q: "Can you help with furniture assembly and installations?"
     a: "Definitely. I provide professional assembly for IKEA, Wayfair, and outdoor playsets, making sure everything is leveled, anchored, and safe for your family to use."
   - q: "Do you offer smart-home and security-camera setup?"
