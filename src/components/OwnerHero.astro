@@ -1,0 +1,39 @@
+---
+/**
+ * Prominent owner hero card — Chris's photo + a "Call me today" CTA.
+ * Used as the hero visual on the homepage, location pages, and city×service
+ * pages so the owner (and the phone) is front-and-center on every page.
+ * Works on both dark and light hero backgrounds.
+ */
+import { Image } from "astro:assets";
+import Icon from "./Icon.astro";
+import { site } from "../data/site";
+import chris from "../assets/brand/chris-wise.jpg";
+
+interface Props {
+  class?: string;
+  caption?: string;
+}
+const { class: className = "", caption = "Talk to the owner directly" } = Astro.props;
+---
+
+<div class={`relative mx-auto w-full max-w-sm lg:max-w-md ${className}`}>
+  <div class="overflow-hidden rounded-3xl bg-white shadow-2xl ring-1 ring-black/5">
+    <Image
+      src={chris}
+      alt="Chris Wise, owner of Wise Residential"
+      class="w-full aspect-square object-cover"
+      widths={[400, 600, 800]}
+      sizes="(max-width: 1024px) 90vw, 440px"
+      loading="eager"
+    />
+    <div class="p-4">
+      <p class="text-center text-[0.7rem] font-bold uppercase tracking-wider text-gulf-700">{caption}</p>
+      <a href={site.phoneHref} class="btn btn-primary w-full mt-2 text-base">
+        <Icon name="phone" class="w-5 h-5" /> Call me today
+      </a>
+      <p class="mt-2 text-center text-sm text-navy-500">{site.phone} · Licensed &amp; insured</p>
+    </div>
+  </div>
+  <div class="absolute -z-10 -bottom-5 -right-5 w-44 h-44 rounded-3xl bg-sand-300/50 blur-2xl" aria-hidden="true"></div>
+</div>

@@ -5,7 +5,7 @@ import CTASection from "../../../components/CTASection.astro";
 import FAQ from "../../../components/FAQ.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import Icon from "../../../components/Icon.astro";
-import PageImage from "../../../components/PageImage.astro";
+import OwnerHero from "../../../components/OwnerHero.astro";
 import { locations, resolveNearby } from "../../../data/locations";
 import { site } from "../../../data/site";
 import { serviceSchema, faqSchema, breadcrumbSchema } from "../../../lib/schema";
@@ -98,11 +98,13 @@ const schema = [
         <div class="mt-7 flex flex-col sm:flex-row gap-3">
           <a href="/estimate" class="btn btn-primary">Free {loc.name} Estimate <Icon name="arrow" class="w-4.5 h-4.5" /></a>
           <a href={site.phoneHref} class="btn btn-ghost">
-            <Icon name="phone" class="w-4.5 h-4.5 text-gulf-600" /> {site.phone}
+            <Icon name="phone" class="w-4.5 h-4.5 text-gulf-600" /> Call me today
           </a>
         </div>
       </div>
-      <PageImage id={`service-${service.id}`} alt={`${d.shortTitle} in ${loc.name}, MS`} class="w-full rounded-2xl shadow-sm border border-navy-100" loading="eager" widths={[400, 600, 800]} sizes="(max-width: 1024px) 100vw, 480px" />
+      <div>
+        <OwnerHero caption={`Your ${loc.name} handyman`} />
+      </div>
     </div>
   </section>
 
