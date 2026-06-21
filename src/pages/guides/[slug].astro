@@ -79,7 +79,7 @@ const schema = [
         </h1>
         <div class="mt-4 flex items-center gap-3 text-sm text-navy-500">
           <Image src={chris} alt="Chris Wise" class="w-9 h-9 rounded-full object-cover object-top" width={72} height={72} />
-          <span class="font-semibold text-navy-700">{site.founder.name}</span>
+          <a href="/about" class="font-semibold text-navy-700 hover:text-gulf-700 link-underline">{site.founder.name}</a>
           <span aria-hidden="true">·</span>
           <time datetime={data.publishDate.toISOString()}>{fmt(data.publishDate)}</time>
           {
