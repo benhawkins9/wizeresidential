@@ -5,6 +5,7 @@ order: 6
 featured: false
 icon: "door"
 tagline: "Sticking doors, drafty windows, screens, and weatherstripping — fixed."
+problemHook: "Doors that stick and windows that let the heat (and bugs) in?"
 summary: "Wise Residential fixes the doors and windows that stick, leak, and let the bugs in — entry-door alignment, screen replacement, weatherstripping, and sliding-door service that lowers your energy bills."
 metaTitle: "Door & Window Repair in Ocean Springs, MS"
 metaDescription: "Searching for door repair near me in Ocean Springs? Sticking doors, window screens, weatherstripping & sliding-door service. Improve security & lower energy bills. Free estimate."

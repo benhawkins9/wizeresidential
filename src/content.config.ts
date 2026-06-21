@@ -31,6 +31,8 @@ const services = defineCollection({
       "gutter",
     ]),
     tagline: z.string(),
+    /** Punchy, problem-first hook shown at the top of the page ("hit them with the pain"). */
+    problemHook: z.string().optional(),
     summary: z.string(),
     metaTitle: z.string(),
     metaDescription: z.string(),

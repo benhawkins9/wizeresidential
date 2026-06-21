@@ -5,6 +5,7 @@ order: 2
 featured: true
 icon: "shield"
 tagline: "Science-based mold removal, structural cleaning & HVAC treatment for coastal homes."
+problemHook: "Musty smell or dark spots creeping across the wall?"
 summary: "Gulf Coast humidity feeds mold. Wise Residential removes it the right way — inspect, contain, remove from every surface (including HVAC and mini-splits), sanitize with EPA-approved products, then restore and prevent regrowth."
 metaTitle: "Mold Remediation & Removal in Ocean Springs, MS"
 metaDescription: "Searching for mold removal near me in Ocean Springs? Science-based remediation, structural cleaning, HVAC/mini-split treatment & EPA-approved sanitizing. Licensed & insured. Free estimate."

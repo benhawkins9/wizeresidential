@@ -5,6 +5,7 @@ order: 9
 featured: false
 icon: "gutter"
 tagline: "Keep coastal storm water flowing away from your home."
+problemHook: "Gutters overflowing and water pooling near your foundation?"
 summary: "Clogged gutters are how Gulf Coast water damage, fascia rot, and foundation problems start. Wise Residential cleans, flushes, and repairs gutters and installs guards so storm-season rain goes where it should."
 metaTitle: "Gutter Cleaning & Guards in Ocean Springs, MS"
 metaDescription: "Searching for gutter cleaning near me in Ocean Springs? Cleaning, flushing, minor repairs & gutter-guard installation to protect against coastal storm water. Licensed & insured. Free estimate."

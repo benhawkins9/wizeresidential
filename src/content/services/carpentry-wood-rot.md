@@ -5,6 +5,7 @@ order: 5
 featured: false
 icon: "hammer"
 tagline: "Coastal carpentry that restores rotted fascia, decks, trim, and siding."
+problemHook: "Soft, crumbling fascia, decks, or trim?"
 summary: "Salt air and humidity are hard on Gulf Coast wood. Wise Residential replaces rotted fascia, soffits, decks, and trim — and treats keepable wood so the rot doesn't return."
 metaTitle: "Wood Rot Repair & Carpentry in Ocean Springs, MS"
 metaDescription: "Need wood rot repair near me in Ocean Springs? Coastal carpentry for rotted fascia, soffits, decks, fences & trim — replaced and treated to last. Licensed & insured. Free estimate."

@@ -5,6 +5,7 @@ order: 3
 featured: true
 icon: "droplet"
 tagline: "Whole-home, under-sink & shower-head filtration — installed, maintained, serviced."
+problemHook: "Hard, funny-tasting, or questionable tap water?"
 summary: "Clean water takes upkeep. Wise Residential installs, maintains, and repairs whole-home, under-sink RO, and shower-head filtration across the coast — with set-price maintenance plans, filter swaps, sanitizing, and water-quality testing on a schedule."
 metaTitle: "Water Filtration Service & Maintenance in Ocean Springs, MS"
 metaDescription: "Need water filter service near me in Ocean Springs? Whole-home, under-sink RO & shower-head filtration installs, repair & maintenance plans from $18/mo. Free estimate."

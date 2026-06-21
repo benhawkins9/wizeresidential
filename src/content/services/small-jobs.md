@@ -5,6 +5,7 @@ order: 1
 featured: true
 icon: "wrench"
 tagline: "No job too small — mounting, fixtures, assembly, and your whole to-do list."
+problemHook: "That honey-do list isn't getting any shorter on its own."
 summary: "From TV mounting to ceiling fans to that growing honey-do list, Wise Residential is the Ocean Springs small-job specialist who shows up on time, does it right, and cleans up afterward."
 metaTitle: "Small Job Handyman in Ocean Springs, MS"
 metaDescription: "Need a small-job handyman near me in Ocean Springs? TV mounting, ceiling fans, fixtures, furniture assembly & to-do lists — licensed, insured, on time. $90 service visit, free estimate + $10 off."

@@ -5,6 +5,7 @@ order: 4
 featured: false
 icon: "paint"
 tagline: "Flawless wall repairs, texture matching, and clean interior paint."
+problemHook: "Cracks, holes, or water stains making a room look tired?"
 summary: "Holes, cracks, water stains, and tired walls — Wise Residential patches, textures, and paints so the repair disappears. Sharp lines, matched textures, and a tidy job site, every time."
 metaTitle: "Drywall Repair & Interior Painting in Ocean Springs, MS"
 metaDescription: "Looking for drywall repair near me in Ocean Springs? Sheetrock patching, texture matching, water-damage repair & interior painting. Clean, precise, licensed & insured. Free estimate."
