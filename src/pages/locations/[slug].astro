@@ -93,6 +93,9 @@ const schema = [
           Licensed, insured repairs, mold remediation &amp; water filtration for {loc.name} homeowners
         </p>
         <p class="mt-4 text-lg text-navy-600 leading-relaxed">{loc.intro}</p>
+        <div class="mt-5 inline-flex items-center gap-2 rounded-full bg-sand-50 text-sand-800 ring-1 ring-sand-200 px-4 py-1.5 text-sm font-bold">
+          <Icon name="check-circle" class="w-4 h-4" /> From $90 / visit · free estimates
+        </div>
         <div class="mt-7 flex flex-col sm:flex-row gap-3">
           <a href="/estimate" class="btn btn-primary">Free {loc.name} Estimate <Icon name="arrow" class="w-4.5 h-4.5" /></a>
           <a href={site.phoneHref} class="btn btn-ghost">
