@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import CTASection from "../../../components/CTASection.astro";
+import OnTimePromise from "../../../components/OnTimePromise.astro";
 import FAQ from "../../../components/FAQ.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import Icon from "../../../components/Icon.astro";
@@ -196,6 +197,8 @@ const schema = [
   }
 
   <FAQ faqs={faqs} heading={`${d.shortTitle} in ${loc.name}: common questions`} />
+
+  <OnTimePromise />
 
   <CTASection heading={`Need ${lower} in ${loc.name}? Let's get it done.`} />
 </BaseLayout>

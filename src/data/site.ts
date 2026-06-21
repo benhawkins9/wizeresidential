@@ -17,7 +17,7 @@ export const site = {
   legalName: "Wise Residential", // REVIEW: registered LLC/DBA. MS Lic. #1500778
   domain: "wizeresidential.com",
   url: "https://www.wizeresidential.com",
-  tagline: "A Healthy Home Starts With a 'Wise' Decision",
+  tagline: "A healthy home starts with a 'Wise' decision",
   shortDescription:
     "Wise Residential is a licensed, insured home-repair and handyman service in Ocean Springs, MS — general repairs, mold remediation, water filtration, drywall, carpentry, and door & window work, done cleanly and on schedule.",
 

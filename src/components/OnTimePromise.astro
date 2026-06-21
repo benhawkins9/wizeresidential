@@ -1,0 +1,39 @@
+---
+/**
+ * "My On-Time Promise" — Chris's trust statement, in a warm-gray band that
+ * echoes the original site's gray palette (#edebe8 / #615a5a). Subtle by
+ * design (no big buttons) so it builds trust without competing with the
+ * page's primary CTA.
+ */
+import Icon from "./Icon.astro";
+---
+
+<section style="background-color:#edebe8">
+  <div class="container-page py-12 md:py-16">
+    <div class="flex flex-col sm:flex-row gap-5 sm:gap-7 max-w-3xl">
+      <span
+        class="inline-flex items-center justify-center w-12 h-12 rounded-2xl shrink-0 text-white"
+        style="background-color:#615a5a"
+      >
+        <Icon name="clock" class="w-6 h-6" />
+      </span>
+      <div>
+        <span class="eyebrow text-navy-500">My on-time promise</span>
+        <h2 class="mt-2 text-2xl md:text-3xl font-extrabold tracking-tight text-navy-900">
+          Time and trust go together
+        </h2>
+        <p class="mt-3 text-lg text-navy-700 leading-relaxed">
+          If we agree on a time frame, I'll be there at that time. If something
+          outside my control changes, you'll hear from me right away, and we'll
+          work with you to set an updated appointment. You'll never be left
+          wondering whether I'm showing up — or just late. I respect your home and
+          your schedule, and I'll leave your home cleaner than when I started.
+        </p>
+        <p class="mt-4 text-navy-600">
+          — Chris Wise, Owner ·
+          <a href="/about" class="text-gulf-700 link-underline font-medium">why I started Wise Residential</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
