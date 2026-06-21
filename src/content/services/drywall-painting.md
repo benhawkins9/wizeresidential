@@ -8,7 +8,7 @@ tagline: "Flawless wall repairs, texture matching, and clean interior paint."
 summary: "Holes, cracks, water stains, and tired walls — Wise Residential patches, textures, and paints so the repair disappears. Sharp lines, matched textures, and a tidy job site, every time."
 metaTitle: "Drywall Repair & Interior Painting in Ocean Springs, MS"
 metaDescription: "Looking for drywall repair near me in Ocean Springs? Sheetrock patching, texture matching, water-damage repair & interior painting. Clean, precise, licensed & insured. Free estimate."
-priceFrom: "Free written estimate"
+priceFrom: "From $90 / visit"
 outcomes:
   - "Patches and seams that disappear into the wall"
   - "Popcorn, orange-peel, or smooth textures matched"

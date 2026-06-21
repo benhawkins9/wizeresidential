@@ -8,7 +8,7 @@ tagline: "Refresh or remodel the rooms you use most — done clean and on schedu
 summary: "From a single-room refresh to a full kitchen or bathroom remodel, Wise Residential handles cabinets, countertops, tile, vanities, fixtures, and flooring with the same on-time, tidy, one-fair-price approach."
 metaTitle: "Kitchen & Bath Remodel in Ocean Springs, MS"
 metaDescription: "Looking for kitchen & bath remodeling near me in Ocean Springs? Cabinets, countertops, tile, vanities, fixtures & flooring — licensed, insured, clean job sites. Free estimate + $10 off."
-priceFrom: "Free written estimate"
+priceFrom: "Free estimate"
 outcomes:
   - "A refreshed kitchen or bath without the big-contractor runaround"
   - "Clean, careful work in the rooms you live in every day"

@@ -8,7 +8,7 @@ tagline: "Keep coastal storm water flowing away from your home."
 summary: "Clogged gutters are how Gulf Coast water damage, fascia rot, and foundation problems start. Wise Residential cleans, flushes, and repairs gutters and installs guards so storm-season rain goes where it should."
 metaTitle: "Gutter Cleaning & Guards in Ocean Springs, MS"
 metaDescription: "Searching for gutter cleaning near me in Ocean Springs? Cleaning, flushing, minor repairs & gutter-guard installation to protect against coastal storm water. Licensed & insured. Free estimate."
-priceFrom: "Free written estimate"
+priceFrom: "From $90 / visit"
 outcomes:
   - "Storm water routed safely away from your home"
   - "Protection against fascia rot and foundation issues"

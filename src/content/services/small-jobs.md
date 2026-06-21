@@ -8,7 +8,7 @@ tagline: "No job too small — mounting, fixtures, assembly, and your whole to-d
 summary: "From TV mounting to ceiling fans to that growing honey-do list, Wise Residential is the Ocean Springs small-job specialist who shows up on time, does it right, and cleans up afterward."
 metaTitle: "Small Job Handyman in Ocean Springs, MS"
 metaDescription: "Need a small-job handyman near me in Ocean Springs? TV mounting, ceiling fans, fixtures, furniture assembly & to-do lists — licensed, insured, on time. $90 service visit, free estimate + $10 off."
-priceFrom: "$90 service visit"
+priceFrom: "From $90 / visit"
 outcomes:
   - "Knock out several small jobs in a single visit"
   - "TVs, shelves, and mirrors mounted securely into studs or masonry"
