@@ -6,7 +6,7 @@ import OnTimePromise from "../../components/OnTimePromise.astro";
 import FAQ from "../../components/FAQ.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Icon from "../../components/Icon.astro";
-import PageImage from "../../components/PageImage.astro";
+import OwnerHero from "../../components/OwnerHero.astro";
 import { site } from "../../data/site";
 import {
   serviceSchema,
@@ -77,9 +77,13 @@ const schema = [
         </a>
       </div>
       </div>
-      <PageImage id={`service-${entry.id}`} alt={`${data.title}`} class="w-full rounded-2xl shadow-sm border border-navy-100" loading="eager" widths={[400, 600, 800]} sizes="(max-width: 1024px) 100vw, 480px" />
+      <div>
+        <OwnerHero caption="Talk to the owner directly" />
+      </div>
     </div>
   </section>
+
+  <OnTimePromise />
 
   <!-- Outcomes -->
   {
@@ -163,8 +167,6 @@ const schema = [
       </div>
     </div>
   </section>
-
-  <OnTimePromise />
 
   <CTASection />
 </BaseLayout>

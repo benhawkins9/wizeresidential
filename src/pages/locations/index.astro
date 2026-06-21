@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import LocationCard from "../../components/LocationCard.astro";
 import CTASection from "../../components/CTASection.astro";
+import OnTimePromise from "../../components/OnTimePromise.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Icon from "../../components/Icon.astro";
 import { locations } from "../../data/locations";
@@ -48,6 +49,8 @@ const byCounty = locations.reduce<Record<string, typeof locations>>(
       </div>
     </div>
   </section>
+
+  <OnTimePromise />
 
   <!-- Home city callout -->
   <section class="container-page pb-6">
