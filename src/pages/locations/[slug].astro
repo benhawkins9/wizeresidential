@@ -42,8 +42,8 @@ const crumbs = [
 // City-specific FAQs (generated from the city's own data), "near me" optimized.
 const cityFaqs = [
   {
-    q: `Do you provide handyman services near me in ${loc.name}?`,
-    a: `Yes! I'm a local home-repair and small-job specialist serving all of ${loc.name}, MS. Whether you're near ${loc.landmarks[0]} or anywhere else in town, I provide fast, reliable repairs — from to-do lists to mold and water work.`,
+    q: `What makes Wise Residential different in ${loc.name}?`,
+    a: `You deal with me, Chris Wise — one local contractor, not a rotating crew. The person who quotes your ${loc.name} job is the person who does it: on time, one fair price no matter your zip, and the site left cleaner than I found it. I'll even finish the work other contractors left undone.`,
   },
   {
     q: `How much does a handyman charge in ${loc.name}?`,
@@ -126,20 +126,24 @@ const schema = [
       </div>
       <div class="rounded-2xl bg-white border border-navy-100 p-6 shadow-sm">
         <h3 class="text-sm font-bold uppercase tracking-wider text-navy-500">
-          {loc.name} at a glance
+          Working in {loc.name}
         </h3>
         <dl class="mt-4 space-y-3 text-sm">
           <div class="flex justify-between gap-4">
-            <dt class="text-navy-500">County</dt>
-            <dd class="font-semibold text-navy-900 text-right">{loc.county}</dd>
-          </div>
-          <div class="flex justify-between gap-4">
-            <dt class="text-navy-500">Population</dt>
-            <dd class="font-semibold text-navy-900 text-right">{loc.population}</dd>
-          </div>
-          <div class="flex justify-between gap-4">
             <dt class="text-navy-500">From Ocean Springs</dt>
-            <dd class="font-semibold text-navy-900 text-right">{loc.driveTime}</dd>
+            <dd class="font-semibold text-navy-900 text-right">{loc.driveTime} away</dd>
+          </div>
+          <div class="flex justify-between gap-4">
+            <dt class="text-navy-500">Service visits</dt>
+            <dd class="font-semibold text-navy-900 text-right">From $90</dd>
+          </div>
+          <div class="flex justify-between gap-4">
+            <dt class="text-navy-500">Estimates</dt>
+            <dd class="font-semibold text-navy-900 text-right">Free + $10 off</dd>
+          </div>
+          <div class="flex justify-between gap-4">
+            <dt class="text-navy-500">Licensed &amp; insured</dt>
+            <dd class="font-semibold text-navy-900 text-right">MS #1500778</dd>
           </div>
         </dl>
         <div class="mt-4 pt-4 border-t border-navy-200">
