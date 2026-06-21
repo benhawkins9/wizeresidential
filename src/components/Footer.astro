@@ -1,9 +1,11 @@
 ---
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 import { site } from "../data/site";
 import { locations } from "../data/locations";
 import Icon from "./Icon.astro";
 import Logo from "./Logo.astro";
+import chris from "../assets/brand/chris-wise.jpg";
 
 const services = (await getCollection("services")).sort(
   (a, b) => a.data.order - b.data.order
@@ -20,6 +22,22 @@ const year = new Date().getFullYear();
         <p class="mt-4 text-sm leading-relaxed text-navy-300 max-w-xs">
           {site.shortDescription}
         </p>
+
+        <!-- Owner signature (on every page via the footer) -->
+        <div class="mt-5 flex items-center gap-3">
+          <Image
+            src={chris}
+            alt="Chris Wise, owner of Wise Residential"
+            class="w-11 h-11 rounded-full object-cover object-top ring-1 ring-white/15 shrink-0"
+            width={88}
+            height={88}
+          />
+          <p class="text-sm text-navy-300 leading-snug">
+            Owned &amp; operated by <strong class="text-white">Chris Wise</strong><br />
+            Licensed &amp; insured · MS #1500778
+          </p>
+        </div>
+
         <ul class="mt-5 space-y-2.5 text-sm">
           <li>
             <a href={site.phoneHref} class="flex items-center gap-2.5 hover:text-white">
@@ -40,10 +58,6 @@ const year = new Date().getFullYear();
           <li class="flex items-center gap-2.5">
             <Icon name="pin" class="w-4.5 h-4.5 text-sand-400" />
             Serving Ocean Springs &amp; the MS Gulf Coast
-          </li>
-          <li class="flex items-start gap-2.5">
-            <Icon name="shield" class="w-4.5 h-4.5 text-sand-400 shrink-0 mt-0.5" />
-            <span>{site.license}</span>
           </li>
           {
             site.social.google && (

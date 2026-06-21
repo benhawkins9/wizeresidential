@@ -6,8 +6,10 @@ import FAQ from "../../components/FAQ.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Icon from "../../components/Icon.astro";
 import PageImage from "../../components/PageImage.astro";
+import { Image } from "astro:assets";
 import { site } from "../../data/site";
 import { articleSchema, faqSchema, breadcrumbSchema } from "../../lib/schema";
+import chris from "../../assets/brand/chris-wise.jpg";
 
 export async function getStaticPaths() {
   const guides = await getCollection("guides");
@@ -76,6 +78,7 @@ const schema = [
           {data.title}
         </h1>
         <div class="mt-4 flex items-center gap-3 text-sm text-navy-500">
+          <Image src={chris} alt="Chris Wise" class="w-9 h-9 rounded-full object-cover object-top" width={72} height={72} />
           <span class="font-semibold text-navy-700">{site.founder.name}</span>
           <span aria-hidden="true">·</span>
           <time datetime={data.publishDate.toISOString()}>{fmt(data.publishDate)}</time>

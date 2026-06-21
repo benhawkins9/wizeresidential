@@ -3,7 +3,9 @@
 Built by adapting the **Ocean Springs SEO framework** (Astro 5 + Tailwind v4, local service-area-business structure, programmatic city pages, full JSON-LD, `llms.txt`, "near me" optimization) to **Wise Residential**, reusing the existing site's brand assets, owner bio, and voice.
 
 **Local project:** `F:\ObsidianVault\Projects\Wize Residential\wizeresidential-web`
-**Target repo:** `github.com/benhawkins9/wizeresidential`
+**Target repo:** `github.com/benhawkins9/wizeresidential` (local git repo initialized + committed; not pushed)
+
+> **Build extended since first draft — now 117 pages.** The §4 recommendations are implemented: added **Kitchen & Bath Remodel, Pressure Washing, and Gutter Cleaning** service pages (**9 services** total), finished **all 14 blog posts**, and built the **city × service matrix (72 pages)** at `/locations/[city]/[service]` (e.g. `/locations/biloxi/mold-remediation`). Sections below are kept as written for context; treat §4's "add next" items as **done**.
 
 ---
 

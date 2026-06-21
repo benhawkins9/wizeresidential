@@ -4,7 +4,6 @@ import CTASection from "../components/CTASection.astro";
 import FAQ from "../components/FAQ.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import Icon from "../components/Icon.astro";
-import { site } from "../data/site";
 import { breadcrumbSchema, faqSchema } from "../lib/schema";
 
 const crumbs = [
@@ -12,80 +11,108 @@ const crumbs = [
   { name: "Service Packages", url: "/service-packages" },
 ];
 
+// Labor packages — matches the live site's pricing model.
 const packages = [
   {
-    name: "Per-Visit Repairs",
-    price: "2-hour minimum",
-    unit: "",
-    tagline: "The simplest way to clear your to-do list.",
+    name: "Service Visit",
+    price: "$90",
+    unit: "per visit",
+    tagline: "The simplest way to get on the schedule.",
     highlight: false,
     features: [
-      "Great for small jobs and honey-do lists",
-      "Two-hour minimum so one trip covers a lot",
-      "Mounting, fixtures, fans, assembly & more",
+      "Covers travel, setup & your first 1 hr 15 min of work",
+      "Perfect for a quick fix or a couple of small jobs",
+      "Anything beyond is a flat-rate estimate",
       "One fair price — same rate, any zip code",
-      "Free estimate before any work begins",
     ],
-    note: "Larger projects (mold, carpentry, filtration installs) are quoted individually.",
+    note: "Materials billed separately if needed.",
+    cta: { label: "Book a visit", href: "/estimate" },
+  },
+  {
+    name: "Half-Day · 4 hours",
+    price: "Flat-rate",
+    unit: "estimate",
+    tagline: "Great for knocking out 3–5 small jobs in one trip.",
+    highlight: true,
+    features: [
+      "Clear a to-do list in a single visit",
+      "Flat-rate labor, discounted from standard rates",
+      "Ideal for a punch list or several repairs",
+      "Materials billed separately if needed",
+    ],
+    note: "Estimate based — I quote it before we start.",
     cta: { label: "Get a free estimate", href: "/estimate" },
   },
   {
-    name: "Filtration Maintenance Plan",
-    price: "Scheduled service",
-    unit: "",
-    tagline: "Set-it-and-forget-it care for your water system.",
-    highlight: true,
-    features: [
-      "Filter & membrane swaps on the right cycle",
-      "Housing sanitization & leak checks",
-      "Water-quality testing each visit",
-      "Whole-home & under-sink RO systems",
-      "Set terms — provided up front, no surprises",
-    ],
-    note: "Filtration maintenance runs on set terms. Ask for the current plan details.",
-    cta: { label: "Ask about a plan", href: "/estimate" },
-  },
-  {
-    name: "Custom Maintenance Plan",
-    price: "Built for your home",
-    unit: "",
-    tagline: "Ongoing care, scheduled around your needs.",
+    name: "Full-Day · 8 hours",
+    price: "Flat-rate",
+    unit: "estimate",
+    tagline: "Clear the whole list, or tackle a bigger project.",
     highlight: false,
     features: [
-      "Seasonal repairs & upkeep",
-      "Post-inspection punch lists",
-      "Mold aftercare & moisture checks",
-      "Scheduled visits, straightforward terms",
-      "Created on a client-to-client basis",
+      "A full day of focused work on your home",
+      "Best per-hour value for long to-do lists",
+      "Flat-rate labor, discounted from standard rates",
+      "Great for seasonal catch-up or move-in prep",
     ],
-    note: "Every home is different — we'll build a plan that fits yours.",
-    cta: { label: "Let's talk", href: "/contact" },
+    note: "Estimate based — quoted up front.",
+    cta: { label: "Get a free estimate", href: "/contact" },
   },
+];
+
+// Real published water-filtration maintenance pricing (from the live site).
+const wholeHome = [
+  { freq: "1× / year", price: "$150", save: "" },
+  { freq: "2× / year (recommended)", price: "$260", save: "save $40" },
+  { freq: "4× / year", price: "$520", save: "save $80" },
+];
+const underSink = [
+  { freq: "1× / year", price: "$125", save: "" },
+  { freq: "2× / year (recommended)", price: "$210", save: "save $40" },
+  { freq: "4× / year", price: "$380", save: "save $120" },
+];
+const monthly = [
+  { plan: "Whole-home · 2×/yr", price: "$22/mo" },
+  { plan: "Whole-home · 4×/yr", price: "$45/mo" },
+  { plan: "Under-sink / RO · 2×/yr", price: "$18/mo" },
+  { plan: "Under-sink / RO · 4×/yr", price: "$32/mo" },
+];
+const visitIncludes = [
+  "Filter swap(s)",
+  "Housing sanitization",
+  "Pressure/flow + leak checks",
+  "Bypass/valve check",
+  "Basic water-quality test",
+  "Service log + next-visit reminders",
 ];
 
 const packageFaqs = [
   {
-    q: "How does your pricing work?",
-    a: "Simple and fair. Small jobs use a two-hour minimum so one visit covers a lot. Bigger projects — mold remediation, carpentry, filtration installs — get a detailed written estimate first. Either way, it's one fair price regardless of your zip code, with no hidden fees.",
+    q: "How does the $90 service visit work?",
+    a: "Your $90 service visit covers travel, setup, and up to the first hour and 15 minutes of work — perfect for a quick fix or a couple of small jobs. Anything beyond that is quoted as a flat-rate estimate I give you before any extra work begins.",
   },
   {
-    q: "Are general service packages a fixed price?",
-    a: "Custom maintenance plans are created on a client-to-client basis, because every home and to-do list is different. We'll scope what you need — seasonal repairs, punch lists, mold aftercare — and set straightforward terms before any work starts.",
+    q: "What are the half-day and full-day packages?",
+    a: "The half-day is a 4-hour block (great for 3–5 small jobs), and the full-day is 8 hours for a long to-do list or a bigger project. Both are flat-rate labor, discounted from my standard rates, with materials billed separately if needed.",
   },
   {
-    q: "What's included in the filtration maintenance plan?",
-    a: "Scheduled filter and membrane swaps, housing sanitization, pressure and leak checks, and a water-quality test each visit, for whole-home and under-sink RO systems. Filtration maintenance runs on set terms — just ask and I'll share the current details.",
+    q: "How much does water-filtration maintenance cost?",
+    a: "Whole-home plans run $150–$520/year depending on frequency (or $22–$45/month); under-sink/RO plans are $125–$380/year (or $18–$32/month). Each visit includes filter swaps, sanitizing, leak checks, and a basic water-quality test. Filters, membranes, and UV bulbs are billed at current market pricing.",
   },
   {
-    q: "Do I have to sign a long contract?",
-    a: "No. Maintenance plans are built around your needs with clear, straightforward terms — not long lock-in contracts. You're always free to start with a single visit and add a plan later.",
+    q: "Do you offer custom maintenance plans?",
+    a: "Yes. For ongoing seasonal upkeep, post-inspection punch lists, or mold aftercare, I'll build a simple plan around your home with straightforward terms — created on a client-to-client basis.",
+  },
+  {
+    q: "Are estimates really discounted?",
+    a: "Yes — the estimates I provide are discounted down from my standard rates, and I'll always show you the flat-rate price before any work starts. No hidden fees.",
   },
 ];
 ---
 
 <BaseLayout
-  title="Service Packages & Maintenance Plans | Wise Residential"
-  description="Wise Residential service packages for Ocean Springs, MS — per-visit repairs (2-hour minimum), water filtration maintenance plans, and custom home maintenance plans. Free estimates, fair pricing."
+  title="Service Packages & Pricing | Wise Residential Ocean Springs"
+  description="Wise Residential pricing for Ocean Springs, MS — a $90 service visit, flat-rate half-day & full-day labor blocks, and water-filtration maintenance plans from $18/mo. Free estimates, fair pricing."
   canonicalPath="/service-packages"
   schema={[breadcrumbSchema(crumbs), faqSchema(packageFaqs)]}
 >
@@ -93,23 +120,24 @@ const packageFaqs = [
 
   <!-- Hero -->
   <section class="container-page pt-8 pb-10 md:pt-12 text-center">
-    <span class="eyebrow">Service Packages</span>
+    <span class="eyebrow">Service Packages &amp; Pricing</span>
     <h1 class="mt-3 text-4xl md:text-5xl font-extrabold tracking-tight text-navy-900">
-      Maintenance plans &amp; fair, simple pricing
+      Simple, flat-rate, fair pricing
     </h1>
     <p class="mt-5 text-lg text-navy-600 leading-relaxed max-w-2xl mx-auto">
-      Whether you need a one-time fix or ongoing care, the deal is the same: an
-      honest estimate, one fair price no matter your zip code, and work done
-      cleanly and on schedule.
+      Start with a $90 service visit, book a discounted half- or full-day block
+      for a bigger list, or put your water filtration on a maintenance plan. One
+      fair price no matter your zip code — and estimates discounted from my
+      standard rates.
     </p>
     <div class="mt-6 inline-flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-navy-600">
       <span class="inline-flex items-center gap-2"><Icon name="check-circle" class="w-4.5 h-4.5 text-gulf-600" /> Free estimates</span>
-      <span class="inline-flex items-center gap-2"><Icon name="check-circle" class="w-4.5 h-4.5 text-gulf-600" /> No hidden fees</span>
+      <span class="inline-flex items-center gap-2"><Icon name="check-circle" class="w-4.5 h-4.5 text-gulf-600" /> Flat-rate labor</span>
       <span class="inline-flex items-center gap-2"><Icon name="check-circle" class="w-4.5 h-4.5 text-gulf-600" /> $10 off your first service</span>
     </div>
   </section>
 
-  <!-- Packages -->
+  <!-- Labor packages -->
   <section class="container-page py-10">
     <div class="grid gap-6 lg:grid-cols-3">
       {
@@ -128,7 +156,7 @@ const packageFaqs = [
             <h2 class="text-xl font-bold text-navy-900">{p.name}</h2>
             <p class="mt-1 text-sm text-navy-600">{p.tagline}</p>
             <div class="mt-4 flex items-baseline gap-1.5">
-              <span class="text-2xl font-extrabold text-navy-900">{p.price}</span>
+              <span class="text-3xl font-extrabold text-navy-900">{p.price}</span>
               <span class="text-navy-500">{p.unit}</span>
             </div>
             <ul class="mt-5 space-y-2.5 flex-1">
@@ -147,9 +175,80 @@ const packageFaqs = [
         ))
       }
     </div>
+    <p class="mt-6 text-sm text-navy-500 text-center max-w-2xl mx-auto">
+      Bigger projects — mold remediation, carpentry, renovations, filtration installs — are quoted individually as flat-rate estimates. Materials billed separately if needed.
+    </p>
   </section>
 
-  <FAQ faqs={packageFaqs} heading="Package & pricing questions" />
+  <!-- Water filtration maintenance plans -->
+  <section class="bg-sand-wash">
+    <div class="container-page py-14 md:py-16">
+      <div class="max-w-2xl">
+        <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-navy-900">Water filtration maintenance plans</h2>
+        <p class="mt-2 text-navy-600">Set terms, real prices — keep your system clean and efficient without thinking about it. I service my own installs and existing systems from any installer.</p>
+      </div>
+
+      <div class="mt-8 grid gap-6 lg:grid-cols-2">
+        <!-- Whole-home -->
+        <div class="rounded-2xl bg-white border border-navy-100 p-6 shadow-sm">
+          <h3 class="font-bold text-navy-900 flex items-center gap-2"><Icon name="droplet" class="w-5 h-5 text-gulf-600" /> Whole-home systems</h3>
+          <table class="mt-4 w-full text-sm">
+            <tbody>
+              {wholeHome.map((r) => (
+                <tr class="border-b border-navy-50 last:border-0">
+                  <td class="py-2.5 text-navy-700">{r.freq}</td>
+                  <td class="py-2.5 text-right font-bold text-navy-900">{r.price}</td>
+                  <td class="py-2.5 text-right text-gulf-700 text-xs w-20">{r.save}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <!-- Under-sink / RO -->
+        <div class="rounded-2xl bg-white border border-navy-100 p-6 shadow-sm">
+          <h3 class="font-bold text-navy-900 flex items-center gap-2"><Icon name="droplet" class="w-5 h-5 text-gulf-600" /> Under-sink / RO systems</h3>
+          <table class="mt-4 w-full text-sm">
+            <tbody>
+              {underSink.map((r) => (
+                <tr class="border-b border-navy-50 last:border-0">
+                  <td class="py-2.5 text-navy-700">{r.freq}</td>
+                  <td class="py-2.5 text-right font-bold text-navy-900">{r.price}</td>
+                  <td class="py-2.5 text-right text-gulf-700 text-xs w-20">{r.save}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="mt-6 grid gap-6 md:grid-cols-2">
+        <div class="rounded-2xl bg-white border border-navy-100 p-6 shadow-sm">
+          <h3 class="text-sm font-bold uppercase tracking-wider text-navy-500">Prefer monthly?</h3>
+          <ul class="mt-3 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
+            {monthly.map((m) => (
+              <li class="flex items-center justify-between gap-3 border-b border-navy-50 pb-1.5">
+                <span class="text-navy-700">{m.plan}</span>
+                <span class="font-bold text-navy-900">{m.price}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="rounded-2xl bg-white border border-navy-100 p-6 shadow-sm">
+          <h3 class="text-sm font-bold uppercase tracking-wider text-navy-500">Every visit includes</h3>
+          <ul class="mt-3 grid sm:grid-cols-2 gap-x-6 gap-y-2">
+            {visitIncludes.map((v) => (
+              <li class="flex items-start gap-2 text-sm text-navy-700">
+                <Icon name="check" class="w-4 h-4 text-gulf-600 shrink-0 mt-0.5" /> <span>{v}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="mt-3 text-xs text-navy-500 italic">Filters, membranes, UV bulbs &amp; media billed at current market pricing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FAQ faqs={packageFaqs} heading="Pricing questions" />
 
   <CTASection
     heading="Not sure what you need?"

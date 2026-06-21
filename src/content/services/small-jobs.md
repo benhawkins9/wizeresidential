@@ -7,10 +7,10 @@ icon: "wrench"
 tagline: "No job too small — mounting, fixtures, assembly, and your whole to-do list."
 summary: "From TV mounting to ceiling fans to that growing honey-do list, Wise Residential is the Ocean Springs small-job specialist who shows up on time, does it right, and cleans up afterward."
 metaTitle: "Small Job Handyman in Ocean Springs, MS"
-metaDescription: "Need a small-job handyman near me in Ocean Springs? TV mounting, ceiling fans, fixtures, furniture assembly & to-do lists — licensed, insured, on time. Free estimate + $10 off your first service."
-priceFrom: "2-hour minimum"
+metaDescription: "Need a small-job handyman near me in Ocean Springs? TV mounting, ceiling fans, fixtures, furniture assembly & to-do lists — licensed, insured, on time. $90 service visit, free estimate + $10 off."
+priceFrom: "$90 service visit"
 outcomes:
-  - "Knock out your entire to-do list in a single visit"
+  - "Knock out several small jobs in a single visit"
   - "TVs, shelves, and mirrors mounted securely into studs or masonry"
   - "Fixtures, fans, and smart devices installed and working right"
   - "A clean, finished result — your home left better than I found it"
@@ -23,15 +23,15 @@ deliverables:
   - "General honey-do / to-do lists"
 faqs:
   - q: "Is there a handyman near me who takes small jobs in Ocean Springs?"
-    a: "Yes — small jobs are my specialty. Whether it's TV mounting in Ocean Springs or a leaky faucet in Gautier, no job is too small. I group tasks into a two-hour minimum so you can clear your entire list in one cost-effective visit."
+    a: "Yes — small jobs are my specialty. Whether it's TV mounting in Ocean Springs or a leaky faucet in Gautier, no job is too small. Most visits start with a $90 service call that covers travel, setup, and your first hour-plus of work, so you can knock out several small tasks in one trip."
   - q: "Can you help with furniture assembly and installations?"
     a: "Definitely. I provide professional assembly for IKEA, Wayfair, and outdoor playsets, making sure everything is leveled, anchored, and safe for your family to use."
   - q: "Do you offer smart-home and security-camera setup?"
     a: "Yes. I install and configure Ring doorbells, Nest thermostats, smart locks, and cameras so your home is connected and secure — no half-finished apps or loose wires."
   - q: "Can you hang heavy mirrors or a gallery wall?"
     a: "Hanging heavy items safely takes the right anchors. I mount mirrors, large artwork, and shelving into studs or masonry so they stay put — no drywall blowouts or crooked frames."
-  - q: "Do you have a minimum service fee for small jobs?"
-    a: "I use a two-hour minimum (or a half-day block) so it's cost-effective to knock out your whole honey-do list in one trip instead of paying a trip fee for every little thing."
+  - q: "Is there a minimum charge for small jobs?"
+    a: "Visits start with a $90 service call that covers travel, setup, and up to the first hour and 15 minutes of work. For a longer list, I offer discounted half-day (4-hour) and full-day (8-hour) blocks so one trip covers a lot — see service packages."
 ---
 
 ## No job too small: professional repairs & installations
@@ -42,7 +42,7 @@ When you search "handyman near me" for the little stuff, you want someone who's 
 
 ## Why hire a small-job specialist?
 
-Grouping your tasks into one visit is the smart way to handle home maintenance. Instead of a service fee for every errand, I use a simple **two-hour minimum** so you can clear the whole list at once:
+Grouping your tasks into one visit is the smart way to handle home maintenance. Most visits start with a simple **$90 service call** — covering travel, setup, and your first hour-plus of work — and for a longer list I offer discounted **half-day (4-hour)** and **full-day (8-hour)** blocks. Either way you clear a lot in one trip:
 
 - **TV mounting & shelving** — securely anchored to any wall, wires managed.
 - **Fixture swaps** — ceiling fans, faucets, and light fixtures.

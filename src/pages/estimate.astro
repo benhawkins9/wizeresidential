@@ -3,8 +3,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import LeadForm from "../components/LeadForm.astro";
 import FAQ from "../components/FAQ.astro";
 import Icon from "../components/Icon.astro";
+import { Image } from "astro:assets";
 import { site } from "../data/site";
 import { breadcrumbSchema, faqSchema } from "../lib/schema";
+import chris from "../assets/brand/chris-wise.jpg";
 
 const crumbs = [
   { name: "Home", url: "/" },
@@ -24,7 +26,7 @@ const estimateFaqs = [
   { q: "Is the estimate really free?", a: "Yes — estimates are free and there's no obligation. For many small jobs I can give you a ballpark right over text from a couple of photos." },
   { q: "How fast will I hear back?", a: "Within one business day, and usually sooner. I prioritize local Ocean Springs and Jackson County calls, and can often schedule within 24–48 hours." },
   { q: "How does the $10 new-customer credit work?", a: site.offer.disclaimer + " Just mention it when you reach out, or submit the form below and I'll apply it to your first invoice." },
-  { q: "Do you charge a trip or service fee for small jobs?", a: "I use a two-hour minimum for small jobs so it's cost-effective to clear your whole to-do list in one visit, rather than nickel-and-diming you with separate trip fees." },
+  { q: "How does the service-visit fee work?", a: "Most visits start with a $90 service call that covers travel, setup, and up to the first hour and 15 minutes of work. Anything beyond that is a flat-rate estimate I give you up front — and for longer to-do lists I offer discounted half-day (4-hour) and full-day (8-hour) blocks." },
   { q: "What areas do you cover?", a: "Ocean Springs and the surrounding Gulf Coast — Gautier, St. Martin, Gulf Hills, Biloxi, D'Iberville, Vancleave, Moss Point, and Pascagoula. If you're nearby and don't see your town, just ask." },
 ];
 ---
@@ -68,6 +70,10 @@ const estimateFaqs = [
           <div class="mt-8 flex items-center gap-3 text-sm text-navy-300">
             <Icon name="phone" class="w-4.5 h-4.5 text-sand-400" />
             Prefer to talk? Call or text <a href={site.phoneHref} class="text-white font-semibold link-underline">{site.phone}</a>
+          </div>
+          <div class="mt-6 flex items-center gap-3 rounded-xl bg-white/5 ring-1 ring-white/10 p-3">
+            <Image src={chris} alt="Chris Wise, owner of Wise Residential" class="w-12 h-12 rounded-full object-cover object-top ring-1 ring-white/20 shrink-0" width={96} height={96} />
+            <p class="text-sm text-navy-200">You'll deal with me directly — <strong class="text-white">Chris Wise</strong>, owner. Licensed &amp; insured, and I treat your home like my own.</p>
           </div>
         </div>
 

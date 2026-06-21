@@ -39,7 +39,7 @@ Find every placeholder in code: `grep -rn "REVIEW" src/`.
 ---
 
 ## Deploy (when you're ready)
-1. `git init` in the project, push to `github.com/benhawkins9/wizeresidential`.
+1. ✅ Git repo initialized + initial commit + `origin` set to `github.com/benhawkins9/wizeresidential`. **Next:** create the empty GitHub repo, then `git -C "<project>" push -u origin main` (needs your GitHub auth).
 2. Import the repo in **Vercel** (auto-detects Astro; `vercel.json` sets headers/caching; `api/lead.js` becomes the `/api/lead` function).
 3. Set env vars (`RESEND_API_KEY`, etc.) and add the domain.
 4. Point DNS (apex + `www`) and confirm SSL.

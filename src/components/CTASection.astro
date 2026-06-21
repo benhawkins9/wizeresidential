@@ -1,6 +1,8 @@
 ---
 import { site } from "../data/site";
+import { Image } from "astro:assets";
 import Icon from "./Icon.astro";
+import chris from "../assets/brand/chris-wise.jpg";
 
 interface Props {
   heading?: string;
@@ -14,7 +16,6 @@ const {
 } = Astro.props;
 
 const bg = variant === "gulf" ? "bg-gulf-700" : "bg-navy-900";
-const firstName = site.founder.name.split(" ")[0];
 ---
 
 <section class={`${bg} text-white`}>
@@ -32,9 +33,21 @@ const firstName = site.founder.name.split(" ")[0];
           {site.phone}
         </a>
       </div>
-      <p class="mt-5 text-sm text-white/60">
-        Licensed &amp; insured · You work directly with {firstName} · Serving the MS Gulf Coast
-      </p>
+
+      <!-- Owner: you work directly with Chris (appears on every page with a CTA) -->
+      <div class="mt-9 inline-flex items-center gap-4 rounded-2xl bg-white/5 ring-1 ring-white/10 px-5 py-3.5 text-left">
+        <Image
+          src={chris}
+          alt="Chris Wise, owner of Wise Residential"
+          class="w-14 h-14 rounded-full object-cover object-top ring-2 ring-white/20 shrink-0"
+          width={112}
+          height={112}
+        />
+        <p class="text-sm text-white/85 leading-snug">
+          You work directly with <strong class="text-white">Chris Wise</strong> — owner, licensed &amp; insured.
+          <span class="block text-white/60">No call centers, no subcontractors. Just me.</span>
+        </p>
+      </div>
     </div>
   </div>
 </section>
