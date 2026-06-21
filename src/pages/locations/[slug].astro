@@ -122,7 +122,7 @@ const schema = [
           Just {loc.driveTime} from my home base in Ocean Springs.
         </p>
       </div>
-      <div class="rounded-2xl bg-navy-50 p-6">
+      <div class="rounded-2xl bg-white border border-navy-100 p-6 shadow-sm">
         <h3 class="text-sm font-bold uppercase tracking-wider text-navy-500">
           {loc.name} at a glance
         </h3>
@@ -141,10 +141,10 @@ const schema = [
           </div>
         </dl>
         <div class="mt-4 pt-4 border-t border-navy-200">
-          <h4 class="text-xs font-bold uppercase tracking-wider text-navy-500">Local anchors</h4>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-navy-500">Nearby landmarks I work around</h4>
           <ul class="mt-2 flex flex-wrap gap-1.5">
             {loc.landmarks.map((l) => (
-              <li class="text-xs bg-white rounded-full px-2.5 py-1 text-navy-700 border border-navy-100">{l}</li>
+              <li class="text-xs bg-navy-50 rounded-full px-2.5 py-1 text-navy-700 border border-navy-100">{l}</li>
             ))}
           </ul>
         </div>
@@ -152,51 +152,35 @@ const schema = [
     </div>
   </section>
 
-  <!-- Common jobs here -->
+  <!-- Common repairs in this city — linked to the per-city service pages -->
   <section class="bg-sand-wash">
-    <div class="container-page py-14">
+    <div class="container-page py-14 md:py-16">
       <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-navy-900">
         Common repairs I handle in {loc.name}
       </h2>
       <p class="mt-3 text-navy-600 max-w-2xl">
-        Every home is different, but in {loc.name} these are the calls I get
-        most:
+        Every home is different — in {loc.name}, the calls I get most are
+        {" "}{loc.commonJobs.slice(0, 3).map((j) => j.toLowerCase()).join(", ")}, and more.
+        Here's everything I help with locally — tap any service for the details:
       </p>
-      <div class="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {
-          loc.commonJobs.map((job) => (
-            <div class="flex items-center gap-3 rounded-xl bg-white border border-navy-100 p-4 shadow-sm">
-              <Icon name="check-circle" class="w-5 h-5 text-gulf-600 shrink-0" />
-              <span class="text-navy-800 font-medium">{job}</span>
-            </div>
+          services.map((s) => (
+            <a
+              href={`/locations/${loc.slug}/${s.id}`}
+              class="group rounded-2xl bg-white border border-navy-100 p-5 shadow-sm hover:shadow-md hover:border-gulf-200 transition-all"
+            >
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gulf-50 text-gulf-600 group-hover:bg-gulf-500 group-hover:text-white transition-colors">
+                <Icon name={s.data.icon} class="w-5 h-5" />
+              </span>
+              <h3 class="mt-3 font-bold text-navy-900 group-hover:text-gulf-700">
+                {s.data.shortTitle} in {loc.name}
+              </h3>
+              <p class="mt-1 text-sm text-navy-600">{s.data.tagline}</p>
+            </a>
           ))
         }
       </div>
-    </div>
-  </section>
-
-  <!-- Services available in this city -->
-  <section class="container-page py-14 md:py-16">
-    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-navy-900">
-      Services available in {loc.name}
-    </h2>
-    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {
-        services.map((s) => (
-          <a
-            href={`/locations/${loc.slug}/${s.id}`}
-            class="group rounded-2xl bg-white border border-navy-100 p-5 shadow-sm hover:shadow-md hover:border-gulf-200 transition-all"
-          >
-            <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gulf-50 text-gulf-600 group-hover:bg-gulf-500 group-hover:text-white transition-colors">
-              <Icon name={s.data.icon} class="w-5 h-5" />
-            </span>
-            <h3 class="mt-3 font-bold text-navy-900 group-hover:text-gulf-700">
-              {s.data.shortTitle} in {loc.name}
-            </h3>
-            <p class="mt-1 text-sm text-navy-600">{s.data.tagline}</p>
-          </a>
-        ))
-      }
     </div>
   </section>
 
