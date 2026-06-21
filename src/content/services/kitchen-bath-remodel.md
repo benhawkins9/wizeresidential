@@ -31,6 +31,10 @@ faqs:
     a: "I handle fixture swaps, vanities, and standard hookups directly, and coordinate licensed trades for anything that requires a specialty license — so the whole project stays on track without you juggling vendors."
   - q: "How do you price a remodel?"
     a: "Every remodel is different, so I provide a detailed written estimate after seeing the space (photos help for a ballpark). One fair price, the scope in writing, and no surprise fees."
+  - q: "How much does a kitchen or bath remodel cost?"
+    a: "It depends on size and finishes, so I quote each job after seeing the space. A targeted refresh — vanity, fixtures, paint, hardware — is a fraction of a full remodel, while a full kitchen or bath is a bigger project. You'll get a written, flat-rate estimate and honest options for your budget before any work starts."
+  - q: "How long does a remodel take?"
+    a: "A bathroom refresh can be a few days; a full bath or kitchen remodel typically runs one to several weeks depending on scope, materials lead time, and any specialty trades. I'll lay out a realistic schedule in your estimate and keep you posted the whole way through."
 ---
 
 ## Updating the rooms that matter most

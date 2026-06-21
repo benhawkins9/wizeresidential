@@ -31,6 +31,8 @@ faqs:
     a: "Yes. I maintain and repair existing systems from all major brands and any installer, making sure your filters, membranes, and UV bulbs are swapped on the correct cycles — and I'll correct a previous installer's mistakes if needed."
   - q: "Do I really need filtration on well water out in Vancleave?"
     a: "Rural homes on well water especially benefit from filtration and regular testing. I service and test well-water systems in Vancleave and the north county so your family's water stays clean and safe."
+  - q: "Is Ocean Springs tap water safe to drink?"
+    a: "Coast municipal water is treated to meet federal standards, but 'safe' and 'great-tasting' aren't the same — chlorine taste, hardness and scale, and aging household plumbing are common complaints, and well water in the north county isn't municipally treated at all. A quick water-quality test shows exactly what's in yours, and the right filter targets those specific issues."
 ---
 
 ## Keeping your filtration system clean & efficient

@@ -31,6 +31,10 @@ faqs:
     a: "Usually not. I use EPA-approved, low-odor products and proper containment that are safe for occupied homes. For larger demolition we'll plan the work and timing together ahead of time."
   - q: "What if another company already did the work but it came back?"
     a: "That's a common call. I correct incomplete or failed prior mold work — often at a discounted rate — by finding the moisture source they missed and treating it properly so it actually stays gone."
+  - q: "What are the signs I have a mold problem?"
+    a: "The usual tells: a persistent musty smell, dark or fuzzy spots on walls and ceilings, peeling paint or warping, allergy symptoms that ease when you leave the house, and any history of leaks or flooding. On the coast, check bathrooms, under sinks, around windows, and inside the air handler. Not sure? I'll take a look."
+  - q: "Does homeowners insurance cover mold remediation?"
+    a: "Sometimes — usually only when the mold comes from a sudden, covered event like a burst pipe, not long-term humidity or deferred maintenance, and many policies cap mold coverage. Document everything and check with your insurer. I'm not an adjuster, but I'm glad to provide a clear written scope for a claim."
 ---
 
 ## A science-based approach to mold removal

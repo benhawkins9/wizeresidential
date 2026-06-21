@@ -11,18 +11,30 @@ const guides = (await getCollection("guides")).sort((a, b) => {
   return b.data.publishDate.getTime() - a.data.publishDate.getTime();
 });
 
+// Bucket by topic so visitors can scan to what they care about.
+const CATEGORY_ORDER = [
+  "Home Repair",
+  "Mold & Air Quality",
+  "Water Filtration",
+  "Carpentry & Wood Rot",
+  "Maintenance",
+  "Seasonal & Storm",
+  "Hiring & Cost",
+];
+const groups = CATEGORY_ORDER.map((cat) => ({
+  cat,
+  posts: guides.filter((g) => g.data.category === cat),
+})).filter((g) => g.posts.length > 0);
+
 const crumbs = [
   { name: "Home", url: "/" },
   { name: "Guides", url: "/guides" },
 ];
-
-const fmt = (d: Date) =>
-  d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
 ---
 
 <BaseLayout
   title="Home Repair & Coastal-Home Guides | Wise Residential"
-  description="Practical home-repair guides for Gulf Coast homeowners — mold prevention, water quality, wood rot, storm prep, and hiring a handyman. From Chris Wise at Wise Residential."
+  description="Practical home-repair guides for Gulf Coast homeowners — mold, water quality, wood rot, storm prep, maintenance, and hiring & cost. From Chris Wise at Wise Residential."
   canonicalPath="/guides"
   schema={[
     webPageSchema("CollectionPage", {
@@ -42,43 +54,49 @@ const fmt = (d: Date) =>
         Coastal-home know-how, in plain English
       </h1>
       <p class="mt-5 text-lg text-navy-600 leading-relaxed">
-        No jargon — just straight answers from a licensed local contractor on
-        keeping a Gulf Coast home healthy: mold, water quality, wood rot, storm
-        prep, and how to hire the right help.
+        Straight answers from a licensed local contractor on keeping a Gulf Coast
+        home healthy. Jump to the topic you're dealing with:
       </p>
+      <div class="mt-5 flex flex-wrap gap-2">
+        {
+          groups.map((g) => (
+            <a href={`#${g.cat.toLowerCase().replace(/[^a-z]+/g, "-")}`} class="inline-flex items-center gap-1.5 rounded-full bg-white border border-navy-100 px-3.5 py-1.5 text-sm font-medium text-navy-700 hover:border-gulf-200 hover:text-gulf-700 transition-colors">
+              {g.cat}
+            </a>
+          ))
+        }
+      </div>
     </div>
   </section>
 
-  <section class="container-page pb-16">
+  <div class="container-page pb-16 md:pb-20 space-y-14">
     {
-      guides.length === 0 ? (
-        <p class="text-navy-500">New guides are coming soon.</p>
-      ) : (
-        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {guides.map((g) => (
-            <a
-              href={`/guides/${g.id}`}
-              class="group flex flex-col rounded-2xl bg-white border border-navy-100 p-6 shadow-sm hover:shadow-md hover:border-gulf-200 hover:-translate-y-0.5 transition-all"
-            >
-              <span class="text-xs font-bold uppercase tracking-wide text-gulf-600">
-                {g.data.category}
-              </span>
-              <h2 class="mt-2 text-lg font-bold text-navy-900 group-hover:text-gulf-700">
-                {g.data.title}
-              </h2>
-              <p class="mt-2 text-sm text-navy-600 leading-relaxed flex-1">
-                {g.data.description}
-              </p>
-              <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900 group-hover:text-gulf-700">
-                Read guide
-                <Icon name="arrow" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-              </span>
-            </a>
-          ))}
-        </div>
-      )
+      groups.map((group) => (
+        <section id={group.cat.toLowerCase().replace(/[^a-z]+/g, "-")} class="scroll-mt-24">
+          <h2 class="text-2xl font-extrabold tracking-tight text-navy-900">{group.cat}</h2>
+          <div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {group.posts.map((g) => (
+              <a
+                href={`/guides/${g.id}`}
+                class="group flex flex-col rounded-2xl bg-white border border-navy-100 p-6 shadow-sm hover:shadow-md hover:border-gulf-200 hover:-translate-y-0.5 transition-all"
+              >
+                <h3 class="text-lg font-bold text-navy-900 group-hover:text-gulf-700">
+                  {g.data.title}
+                </h3>
+                <p class="mt-2 text-sm text-navy-600 leading-relaxed flex-1">
+                  {g.data.description}
+                </p>
+                <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900 group-hover:text-gulf-700">
+                  Read guide
+                  <Icon name="arrow" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
+      ))
     }
-  </section>
+  </div>
 
   <CTASection variant="gulf" />
 </BaseLayout>

@@ -31,6 +31,8 @@ faqs:
     a: "Absolutely. If your deck has soft spots or your fence is leaning, I can replace individual boards or structural posts — usually for far less than a full tear-out and rebuild."
   - q: "How do you keep wood rot from coming back?"
     a: "Beyond replacing the bad wood, I use borate treatments and quality sealants to inhibit future fungal activity, and I address the moisture that caused it in the first place."
+  - q: "What are the signs of wood rot?"
+    a: "Look for wood that's soft, spongy, or crumbles when you poke it; paint that's bubbling or flaking; dark stains or a damp, musty smell; and fascia, deck boards, or trim that flex underfoot or under a screwdriver. On the coast it usually starts where water sits — eaves, ledger boards, and ground-contact posts. Caught early it's a patch; ignored, it spreads into framing."
 ---
 
 ## Restoring the structural integrity of your home
