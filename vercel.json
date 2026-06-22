@@ -2,6 +2,25 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/bio", "destination": "/about", "permanent": true },
+    { "source": "/contact-us", "destination": "/contact", "permanent": true },
+    { "source": "/accessibility-statement", "destination": "/accessibility", "permanent": true },
+    { "source": "/privacy-policy", "destination": "/privacy", "permanent": true },
+    { "source": "/term-and-conditions", "destination": "/terms", "permanent": true },
+    { "source": "/book-online", "destination": "/estimate", "permanent": true },
+    { "source": "/inquiry-services-page", "destination": "/estimate", "permanent": true },
+    { "source": "/filtration-maintenance-packages", "destination": "/service-packages", "permanent": true },
+    { "source": "/epa-regulated-chemicals", "destination": "/services/mold-remediation", "permanent": true },
+    { "source": "/service-page/appliance-installations", "destination": "/services/small-jobs", "permanent": true },
+    { "source": "/service-page/general-home-services-repairs-upddates", "destination": "/services/small-jobs", "permanent": true },
+    { "source": "/service-page/home-renovation-bathroom-kitchens", "destination": "/services/kitchen-bath-remodel", "permanent": true },
+    { "source": "/service-page/online-estimates", "destination": "/estimate", "permanent": true },
+    { "source": "/service-page/onsite-estimate-quote", "destination": "/estimate", "permanent": true },
+    { "source": "/service-page/small-job-mold-remediation-1", "destination": "/services/mold-remediation", "permanent": true },
+    { "source": "/service-page/whole-home-under-sink-water-filtration", "destination": "/services/water-filtration", "permanent": true },
+    { "source": "/service-page/:rest*", "destination": "/services", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",
