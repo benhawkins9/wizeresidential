@@ -5,6 +5,7 @@ import CTASection from "../../components/CTASection.astro";
 import OnTimePromise from "../../components/OnTimePromise.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Icon from "../../components/Icon.astro";
+import OwnerHero from "../../components/OwnerHero.astro";
 import { locations } from "../../data/locations";
 import { site } from "../../data/site";
 import { breadcrumbSchema } from "../../lib/schema";
@@ -33,19 +34,24 @@ const byCounty = locations.reduce<Record<string, typeof locations>>(
   <Breadcrumbs crumbs={crumbs} />
 
   <section class="container-page pt-8 pb-12 md:pt-12">
-    <div class="max-w-3xl">
-      <span class="eyebrow">Service Areas</span>
-      <h1 class="mt-3 text-4xl md:text-5xl font-extrabold tracking-tight text-navy-900">
-        Home repair across the Mississippi Gulf Coast
-      </h1>
-      <p class="mt-5 text-lg text-navy-600 leading-relaxed">
-        I'm based in Ocean Springs and I serve this coast — Jackson and Harrison
-        County, a short drive from home. Find your city below, or
-        <a href="/contact" class="text-gulf-700 link-underline">reach out</a> if you're
-        nearby and don't see it listed.
-      </p>
-      <div class="mt-7">
-        <a href="/estimate" class="btn btn-primary">Get a Free Estimate <Icon name="arrow" class="w-4.5 h-4.5" /></a>
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div>
+        <span class="eyebrow">Service Areas</span>
+        <h1 class="mt-3 text-4xl md:text-5xl font-extrabold tracking-tight text-navy-900">
+          Home repair across the Mississippi Gulf Coast
+        </h1>
+        <p class="mt-5 text-lg text-navy-600 leading-relaxed">
+          I'm based in Ocean Springs and I serve this coast — Jackson and Harrison
+          County, a short drive from home. Find your city below, or
+          <a href="/contact" class="text-gulf-700 link-underline">reach out</a> if you're
+          nearby and don't see it listed.
+        </p>
+        <div class="mt-7">
+          <a href="/estimate" class="btn btn-primary">Get a Free Estimate <Icon name="arrow" class="w-4.5 h-4.5" /></a>
+        </div>
+      </div>
+      <div>
+        <OwnerHero caption="Based in Ocean Springs" />
       </div>
     </div>
   </section>
