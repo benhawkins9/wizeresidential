@@ -5,7 +5,7 @@ category: "Water Filtration"
 publishDate: 2026-06-15
 featured: false
 metaTitle: "Water Quality Ocean Springs MS | Home Water Filtration"
-metaDescription: "Concerned about water quality in Ocean Springs? Learn about Gulf Coast tap water and well water issues, and find a water filter near me — Wise Residential (228) 327-8859."
+metaDescription: "Concerned about water quality in Ocean Springs? Learn about Gulf Coast tap water and well water issues, and find a water filter near me — Wise Residential (251) 272-9682."
 answer: "Ocean Springs tap water meets federal standards, but Gulf Coast water often carries elevated chlorine, sediment, iron, and sometimes sulfur — especially from private wells. A whole-home filter or under-sink RO system removes these contaminants and improves taste, odor, and appliance life."
 faqs:
   - q: "Is Ocean Springs tap water safe to drink?"
@@ -61,4 +61,4 @@ I'm not here to sell you equipment you don't need. I'll take a look at your curr
 
 Licensed and insured (MS #1500778), serving Ocean Springs, Gautier, Biloxi, Vancleave, Moss Point, and the surrounding Gulf Coast.
 
-> Ready to improve your home's water quality? [Request a free estimate](/estimate) — new customers get a $10 credit toward their first job. Call or text Chris at (228) 327-8859.
+> Ready to improve your home's water quality? [Request a free estimate](/estimate) — new customers get a $10 credit toward their first job. Call or text Chris at (251) 272-9682.

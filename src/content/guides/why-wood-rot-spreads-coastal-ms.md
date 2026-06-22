@@ -5,7 +5,7 @@ category: "Carpentry & Wood Rot"
 publishDate: 2026-06-17
 featured: false
 metaTitle: "Wood Rot Repair MS | Coastal Mississippi Fascia & Trim"
-metaDescription: "Wood rot spreads fast on the MS Gulf Coast. Learn why, how to spot it on fascia, soffits, and decks, and find wood rot repair near me — Wise Residential (228) 327-8859."
+metaDescription: "Wood rot spreads fast on the MS Gulf Coast. Learn why, how to spot it on fascia, soffits, and decks, and find wood rot repair near me — Wise Residential (251) 272-9682."
 answer: "Coastal Mississippi's combination of high humidity, salt air, and frequent rain creates ideal conditions for wood-decay fungi. Fascia boards, soffits, deck framing, and exterior trim are most vulnerable. Catching it early — before it spreads to structural framing — keeps repair costs manageable."
 faqs:
   - q: "What does wood rot look like on a house in coastal Mississippi?"
@@ -68,4 +68,4 @@ Fascia and trim rot is manageable. When it gets into the structural framing — 
 
 If you're seeing any of the signs above, or just haven't had someone look at your exterior in a while, [request a free estimate](/estimate) and I'll come take a look. I handle [carpentry and wood rot repair](/services/carpentry-wood-rot) throughout Ocean Springs, Gautier, D'Iberville, Biloxi, St. Martin, and surrounding Gulf Coast communities. Licensed and insured (MS #1500778).
 
-> Don't let coastal humidity turn a small repair into a big one. [Schedule a free estimate](/estimate) today — new customers get a $10 credit. Call or text Chris at (228) 327-8859.
+> Don't let coastal humidity turn a small repair into a big one. [Schedule a free estimate](/estimate) today — new customers get a $10 credit. Call or text Chris at (251) 272-9682.

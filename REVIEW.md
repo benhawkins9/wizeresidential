@@ -11,7 +11,7 @@ Find every placeholder in code: `grep -rn "REVIEW" src/`.
 | # | Item | Where | Notes |
 |---|------|-------|-------|
 | 1 | **Brand spelling: "Wise" vs "Wize"** | `src/data/site.ts → name` | Built as **"Wise Residential"** (matches your live site, logo, and the plan's recommendation); domain stays `wizeresidential.com`. Change `name` once and it propagates everywhere. |
-| 2 | **Phone number (NAP conflict)** | `src/data/site.ts → phone, phoneHref` | Your site shows **two** numbers: **(228) 327-8859** (homepage, local Ocean Springs) and **(251) 272-9682** (accessibility page + Google, a Mobile AL code). Built with the **228**. Confirm the right one and make it identical on the site **and the GBP**. |
+| 2 | ✅ **Phone — resolved** | `src/data/site.ts` | Set to **(251) 272-9682** everywhere (2026-06-21) to match the Google Business Profile; old (228) dropped. |
 | 3 | **Domain & hosting** | `astro.config.mjs`, `src/data/site.ts → url` | Decision: repoint **wizeresidential.com** (currently Wix) to Vercel, or use a new EMD (e.g. `oceanspringshomerepair.com`, per your plan). Build assumes `https://www.wizeresidential.com`. |
 | 4 | **Lead-form email backend** | Vercel env + `api/lead.js` | Set `RESEND_API_KEY` and verify the sending domain in Resend; optionally set `LEAD_NOTIFY_TO` / `LEAD_REPLY_TO` (default `cwise@wizeresidential.com`). Until then the form shows an honest "call/text me" fallback — no leads are silently dropped. |
 | 5 | **Legal pages** | `src/pages/privacy.astro`, `terms.astro`, `accessibility.astro` | Starters only. Your live site has real Terms/warranty + an accessibility statement — port those in and have counsel confirm. |

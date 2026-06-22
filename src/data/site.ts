@@ -22,11 +22,11 @@ export const site = {
     "Wise Residential is a licensed, insured home-repair and handyman service in Ocean Springs, MS — general repairs, mold remediation, water filtration, drywall, carpentry, and door & window work, done cleanly and on schedule.",
 
   // Contact -----------------------------------------------------------
-  // REVIEW: the live site shows TWO numbers — homepage 228-327-8859 (local
-  // Ocean Springs area code) and accessibility page/GBP 251-272-9682 (Mobile,
-  // AL). Using the local 228 number for trust + local-SEO relevance. CONFIRM.
-  phone: "(228) 327-8859",
-  phoneHref: "tel:+12283278859",
+  // Phone: (251) 272-9682 — confirmed 2026-06-21 to match the Google Business
+  // Profile (NAP consistency). The old (228) number from the prior site was
+  // dropped so there's one number everywhere (site + GBP + citations).
+  phone: "(251) 272-9682",
+  phoneHref: "tel:+12512729682",
   email: "cwise@wizeresidential.com",
   bookingUrl: "/estimate", // internal lead-gen page (free estimate + $10 credit)
 

@@ -85,7 +85,7 @@ function autoReplyHtml(d) {
       </p>
       <p style="color:#33475b;font-size:15px;line-height:1.7;margin:0 0 20px">
         Need it sooner? Just call or text me at
-        <a href="tel:+12283278859" style="color:${SKY};font-weight:600;text-decoration:none">(228) 327-8859</a>.
+        <a href="tel:+12512729682" style="color:${SKY};font-weight:600;text-decoration:none">(251) 272-9682</a>.
       </p>
       <a href="https://www.wizeresidential.com" style="display:inline-block;background:${ORANGE};color:#fff;text-decoration:none;padding:11px 20px;border-radius:8px;font-weight:700;font-size:15px">Visit wizeresidential.com</a>
       <p style="color:${INK};font-size:15px;line-height:1.6;margin:24px 0 0">
@@ -94,7 +94,7 @@ function autoReplyHtml(d) {
       </p>
     </div>
     <p style="color:#94a3b8;font-size:12px;text-align:center;margin:16px 0 0">
-      Wise Residential · Ocean Springs, MS · (228) 327-8859 · Licensed &amp; insured
+      Wise Residential · Ocean Springs, MS · (251) 272-9682 · Licensed &amp; insured
     </p>
   </div>`;
 }

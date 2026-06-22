@@ -71,4 +71,4 @@ A contractor familiar with Ocean Springs, Gautier, D'Iberville, and Pascagoula h
 
 See [common home repairs in Ocean Springs](/guides/common-home-repairs-ocean-springs) to understand what Gulf Coast homes typically need, and [our locations page](/locations) to confirm we serve your area.
 
-> Want to see how we handle the estimate process? [Request your free estimate at /estimate](/estimate) — new customers receive a $10 credit toward their first project. Call (228) 327-8859.
+> Want to see how we handle the estimate process? [Request your free estimate at /estimate](/estimate) — new customers receive a $10 credit toward their first project. Call (251) 272-9682.

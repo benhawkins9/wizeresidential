@@ -67,4 +67,4 @@ The most efficient approach to property maintenance is working with a single lic
 
 Wise Residential serves Ocean Springs, Gautier, St. Martin, Gulf Hills, Biloxi, D'Iberville, Vancleave, Moss Point, and Pascagoula. Licensed & insured (MS #1500778).
 
-> Ready to get your home's maintenance on track? [Request a free estimate at /estimate](/estimate) — new customers receive a $10 credit toward their first project. Call (228) 327-8859.
+> Ready to get your home's maintenance on track? [Request a free estimate at /estimate](/estimate) — new customers receive a $10 credit toward their first project. Call (251) 272-9682.

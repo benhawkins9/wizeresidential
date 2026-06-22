@@ -60,4 +60,4 @@ I offer pre-season exterior walkthroughs throughout Ocean Springs, Biloxi, D'Ibe
 
 Licensed and insured (MS #1500778).
 
-> Get your home ready before storm season arrives. [Request a free estimate](/estimate) — new customers receive a $10 credit toward their first job. Call or text Chris at (228) 327-8859.
+> Get your home ready before storm season arrives. [Request a free estimate](/estimate) — new customers receive a $10 credit toward their first job. Call or text Chris at (251) 272-9682.

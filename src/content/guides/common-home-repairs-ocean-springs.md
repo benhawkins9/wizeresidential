@@ -68,4 +68,4 @@ Ceiling fan wobble, light fixture replacements, and outlet cover repairs are the
 
 These are the repairs that keep a Gulf Coast home sound and comfortable. The [Wise Residential homepage](/) has an overview of everything I cover across Ocean Springs and the surrounding coast.
 
-> Ready to work through your repair list? [Request a free estimate](/estimate) — new customers get a $10 credit toward their first project. Licensed & insured (MS #1500778). Call (228) 327-8859.
+> Ready to work through your repair list? [Request a free estimate](/estimate) — new customers get a $10 credit toward their first project. Licensed & insured (MS #1500778). Call (251) 272-9682.
