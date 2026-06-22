@@ -143,7 +143,7 @@ const schema = [
     </div>
   </section>
 
-  <PricingStrip />
+  <PricingStrip filtration={entry.id === "water-filtration"} />
 
   <FAQ faqs={data.faqs} heading={`${data.shortTitle}: common questions`} />
 

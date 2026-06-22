@@ -8,21 +8,26 @@ import Icon from "./Icon.astro";
 
 interface Props {
   class?: string;
+  /** Show the water-filtration maintenance-plan figure (only on filtration pages). */
+  filtration?: boolean;
 }
-const { class: className = "" } = Astro.props;
+const { class: className = "", filtration = false } = Astro.props;
 
 const facts = [
   { big: "$90", small: "service visit — covers travel, setup & your first 1¼ hours of work" },
   { big: "Flat-rate", small: "written estimates for bigger jobs, discounted from standard rates" },
-  { big: "From $18/mo", small: "water-filtration maintenance plans" },
+  ...(filtration
+    ? [{ big: "From $18/mo", small: "water-filtration maintenance plans" }]
+    : []),
 ];
+const gridCols = facts.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2";
 ---
 
 <section class={className}>
   <div class="container-page py-10 md:py-12">
     <div class="rounded-3xl bg-navy-900 text-white p-7 md:p-9">
       <div class="flex flex-col lg:flex-row lg:items-center gap-7 lg:gap-10 justify-between">
-        <div class="grid sm:grid-cols-3 gap-6 flex-1">
+        <div class={`grid ${gridCols} gap-6 flex-1`}>
           {
             facts.map((f) => (
               <div>
